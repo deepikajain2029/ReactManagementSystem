@@ -76,8 +76,8 @@ const Header = () => {
                             </a>
                             <div className="collapse" id="collapseDisease" aria-labelledby="headingThree" data-bs-parent="#sidenavAccordion">
                                 <nav className="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                    <a className="nav-link" href="layout-static.html">Add Disease</a>
-                                    <a className="nav-link" href="layout-static.html">View All Disease</a>
+                                    <a className="nav-link" href="/adddisease">Add Disease</a>
+                                    <a className="nav-link" href="/viewalldiseases">View All Disease</a>
                                     
                                 </nav>
                             </div>
@@ -89,8 +89,8 @@ const Header = () => {
                             </a>
                             <div className="collapse" id="collapseMedicine" aria-labelledby="headingFour" data-bs-parent="#sidenavAccordion">
                                 <nav className="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                    <a className="nav-link" href="layout-static.html">Add Medicine</a>
-                                    <a className="nav-link" href="layout-static.html">View All Medicine</a>
+                                    <a className="nav-link" href="/addmedicine">Add Medicine</a>
+                                    <a className="nav-link" href="/viewallmedicines">View All Medicine</a>
                                 </nav>
                             </div>
                            

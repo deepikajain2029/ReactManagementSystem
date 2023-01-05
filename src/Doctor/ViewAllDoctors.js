@@ -55,7 +55,7 @@ const ViewAllDoctors = () => {
                 <form className="d-none d-md-inline-block" >
                   <div className="input-group" >
                     <input className="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
-                    <button className="btn btn-primary" onClick={()=>getDoctorByName(adddoctor.name)} id="btnNavbarSearch" type="button"><i className="fas fa-search"></i></button>
+                    <button className="btn btn-primary" id="btnNavbarSearch" type="button"><i className="fas fa-search"></i></button>
                   </div>
                 </form>
               </div>
