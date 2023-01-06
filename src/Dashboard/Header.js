@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react'
 import Table from 'react-bootstrap/Table';
-import {Link  } from 'react-router-dom';
+import {Link,useNavigate  } from 'react-router-dom';
+import {useAuthState} from 'react-firebase-hooks/auth'
+import { auth } from "../firbase";
+import {signOut } from "firebase/auth"; 
 
 const Header = () => {
     const openNav = () => {
@@ -10,12 +13,27 @@ const Header = () => {
             localStorage.setItem('sb|sidebar-toggle', document.body.classList.contains('sb-sidenav-toggled'));
         }
     }
+
+    const[user, loading,error]=useAuthState(auth);
+    const navigate = useNavigate();
+    if (!user) {
+        navigate("/login") 
+         }
+    const Signout=()=>{
+        signOut(auth).then(() => {
+            navigate("/login");
+          }).catch((error) => {
+            // An error happened.
+          });
+    }
   return (
     <>
 
     <div className="sb-nav-fixed">
         <nav className="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+            
             <button className="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" onClick={openNav} id="sidebarToggle" href="#!"><i className="fas fa-bars"></i></button>
+
             <a className="navbar-brand ps-3" href="/dashboard">Patient Management System</a>
             <form className="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
                 
@@ -28,7 +46,7 @@ const Header = () => {
                         <li><a className="dropdown-item" href="#!">Update Password</a></li>
                         <li><a className="dropdown-item" href="#!">Add Admin</a></li>
                         <li><hr className="dropdown-divider" /></li>
-                        <li><a className="dropdown-item" href="#!">Logout</a></li>
+                        <li><a className="dropdown-item" onClick={Signout} href="#!">Logout</a></li>
                     </ul>
                 </li>
             </ul>
@@ -66,6 +84,20 @@ const Header = () => {
                                     <a className="nav-link" href="/addpatient">Add Patient</a>
                                     <a className="nav-link" href="/viewallpatients">View All Patients</a>
                                     <a className="nav-link" href="layout-sidenav-light.html">Patients Disease</a>
+                                    <a className="nav-link" href="layout-static.html">Add Patient</a>
+                                    <a className="nav-link" href="layout-sidenav-light.html">View All Patients</a>
+                                </nav>
+                            </div>
+                             {/* Patient Disease Area */}
+                             <a className="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePatientPages" aria-expanded="false" aria-controls="collapsePages">
+                                <div className="sb-nav-link-icon"><i className="fas fa-book-open"></i></div>
+                                Patient Disease
+                                <div className="sb-sidenav-collapse-arrow"><i className="fas fa-angle-down"></i></div>
+                            </a>
+                            <div className="collapse" id="collapsePatientPages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+                                <nav className="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                    <a className="nav-link" href="/addpatientdisease">Add Patient Disease</a>
+                                    <a className="nav-link" href="/viewpatientdisease">View Patients Disease</a>
                                 </nav>
                             </div>
                             {/* Disease Area */}
@@ -96,10 +128,7 @@ const Header = () => {
                            
                         </div>
                     </div>
-                    <div className="sb-sidenav-footer">
-                        <div className="small">Logged in as:</div>
-                        Start Bootstrap
-                    </div>
+ 
                 </nav>
             </div>
             
