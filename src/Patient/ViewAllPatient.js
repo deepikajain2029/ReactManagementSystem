@@ -3,21 +3,21 @@ import DataTable from 'react-data-table-component'
 import { AiFillDelete, AiFillEdit } from 'react-icons/ai';
 import { useNavigate, useLocation } from 'react-router-dom';
 
-const ViewAllDiseases = () => {
+const ViewAllPatient = () => {
 
     const [search, SetSearch] = useState("");
 
-    const [diseaseView, setdiseaseView] = useState([]);
+    const [patientView, setpatientView] = useState([]);
 
     const navigate = useNavigate();
 
-    const fetchDiseaseDetails = async () => {
+    const fetchPatientDetails = async () => {
 
-        const data = await fetch("http://localhost:5000/Disease")
+        const data = await fetch("http://localhost:5000/Patient")
 
         const parsedData = await data.json()
 
-        setdiseaseView(parsedData)
+        setpatientView(parsedData)
 
     }
 
@@ -34,7 +34,44 @@ const ViewAllDiseases = () => {
             sortable: true,
 
         },
+        {
 
+            name: "Email",
+
+            selector: (row) => row.email,
+
+            sortable: true,
+
+        },
+        {
+
+            name: "Address 1",
+
+            selector: (row) => row.address1,
+
+            sortable: true,
+
+        },
+
+        {
+
+            name: "Address 2",
+
+            selector: (row) => row.address2,
+
+            sortable: true,
+
+        },
+
+        {
+
+            name: "Mobile",
+
+            selector: (row) => row.mobile,
+
+            sortable: true,
+
+        },
         {
 
             name: "Edit",
@@ -43,7 +80,7 @@ const ViewAllDiseases = () => {
 
             (
 
-                <AiFillEdit onClick={() => editDisease(row.id)}></AiFillEdit>
+                <AiFillEdit onClick={() => editPatient(row.id)}></AiFillEdit>
 
             ),
 
@@ -57,36 +94,38 @@ const ViewAllDiseases = () => {
 
             (
 
-                <AiFillDelete onClick={() => deleteDisease(row.id)}></AiFillDelete>
+                <AiFillDelete onClick={() => deletePatient(row.id)}></AiFillDelete>
 
             ),
 
         }
 
     ]
-    const deleteDisease = async (id) => {
-        const data = await fetch(`http://localhost:5000/Disease/${id}`, { method: 'delete' })
+    const deletePatient = async (id) => {
+        const data = await fetch(`http://localhost:5000/Patient/${id}`, { method: 'delete' })
 
         const response = await data.json();
 
-        fetchDiseaseDetails();
+        fetchPatientDetails();
     }
 
-    const editDisease = async (id) => {
+    const editPatient = async (id) => {
 
-        const data = await fetch(`http://localhost:5000/Disease/${id}`)
+        const data = await fetch(`http://localhost:5000/Patient/${id}`)
 
         const response = await data.json();
 
         console.log(response)
 
-        navigate("/adddisease", { state: { adddisease: response } })
+        navigate("/addpatient" , { state: { addPatient: response } })
+
+        // navigate("/addpatient", { state: { addpatient: response } })
 
     }
 
     useEffect(() => {
 
-        fetchDiseaseDetails();
+        fetchPatientDetails();
 
     }, []
 
@@ -94,9 +133,9 @@ const ViewAllDiseases = () => {
 
     useEffect(() => {
 
-        let filtered = diseaseView.filter(d => d.name.toLowerCase().includes(search.toLowerCase()))
+        let filtered = patientView.filter(d => d.name.toLowerCase().includes(search.toLowerCase()))
 
-        setdiseaseView(filtered)
+        setpatientView(filtered)
 
     }, [search]
 
@@ -112,11 +151,11 @@ const ViewAllDiseases = () => {
 
                         <div className="row">
 
-                            <DataTable title="View All Disease"
+                            <DataTable title="View All Patients"
 
                                 columns={columns}
 
-                                data={diseaseView}
+                                data={patientView}
 
                                 pagination
 
@@ -150,4 +189,4 @@ const ViewAllDiseases = () => {
     )
 }
 
-export default ViewAllDiseases
+export default ViewAllPatient
