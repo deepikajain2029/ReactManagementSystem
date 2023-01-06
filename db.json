@@ -30,7 +30,7 @@
   ],
   "Doctor": [
     {
-      "name": "Vikash Shukla",
+      "name": "Vikash Shukla Reddy abc",
       "address1": "Noida",
       "address2": "Noida India",
       "specialist": "Neonatologist",
@@ -58,16 +58,6 @@
       "degree": "MBBS,MD,BBA",
       "doctoremailaddress": "test@test.com",
       "id": 3
-    },
-    {
-      "name": "Kamlesh",
-      "address1": "fdsf",
-      "address2": "fdsf",
-      "specialist": "fdsf",
-      "mobile": "65767567",
-      "degree": "df",
-      "doctoremailaddress": "test@test.com",
-      "id": 7
     },
     {
       "name": "Nikhil J",
@@ -158,6 +148,26 @@
       "degree": "MBA,BBA",
       "doctoremailaddress": "kashish.N@gmail.com",
       "id": 17
+    },
+    {
+      "name": "Test",
+      "address1": "dsad",
+      "address2": "dsad",
+      "specialist": "sad",
+      "mobile": "546456456",
+      "degree": "fdsf",
+      "doctoremailaddress": "tes@test.com",
+      "id": 18
+    },
+    {
+      "name": "dsf",
+      "address1": "dsf",
+      "address2": "fds",
+      "specialist": "fdsf",
+      "mobile": "767",
+      "degree": "dfsdsf",
+      "doctoremailaddress": "tes@test.com",
+      "id": 19
     }
   ],
   "Patient": [

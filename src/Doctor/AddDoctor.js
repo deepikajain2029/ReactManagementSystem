@@ -2,14 +2,14 @@ import React, { useState, useEffect } from 'react'
 import Button from 'react-bootstrap/Button';
 import { useNavigate, useLocation } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
-import { Input } from 'reactstrap'
+import { Input,Alert } from 'reactstrap'
 
 const AddDoctor = () => {
   const location = useLocation()
-
   const [adddoctor, setadddoctor] = useState({})
-
+  const [SucMessage, setSucMessage] = useState(false);
   const [validated, setValidated] = useState(false);
+
   const navigate = useNavigate();
   useEffect(() => {
     if (location.state != null) {
@@ -58,10 +58,9 @@ const AddDoctor = () => {
           })
         }
         const data = fetch(`http://localhost:5000/doctor`, requestOptions)
-        
       }
-      
-      navigate('/viewalldoctors');
+      setSucMessage(true);
+      // navigate('/viewalldoctors');
     }
   };
   const onChangeHandler = (e) => {
@@ -76,8 +75,10 @@ const AddDoctor = () => {
       <div className="container " >
         <div id="layoutSidenav">
           <div id="layoutSidenav_content">
+         
             <Form noValidate validated={validated} onSubmit={submitDoctorDetails}>
               <h2 style={{ textAlign: 'center' }}>{location.state != null ? 'Edit Doctor' : 'Add Doctor'}</h2>
+              {SucMessage && <Alert variant="success">Doctor Saved !</Alert>}
               <Form.Group className="mb-3" controlId="formBasicDoctorName">
                 <Form.Label>Doctor Name</Form.Label>
                 <Input id="name" name="name" required type="text" value={adddoctor.name} onChange={onChangeHandler}

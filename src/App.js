@@ -7,6 +7,7 @@ import AddDoctor from './Doctor/AddDoctor';
 import Header from './Dashboard/Header';
 import Footer from './Dashboard/Footer';
 import ViewAllDoctors from './Doctor/ViewAllDoctors';
+import Viewpatient from './Doctor/Viewpatient';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="dashboard" element={<Dashboard />}></Route>
           <Route path="adddoctor" element={<AddDoctor />}></Route>
           <Route path="viewalldoctors" element={<ViewAllDoctors />}></Route>
+          <Route path="viewpatient" element={<Viewpatient />}></Route>
         </Route>
       </Routes>
       <Footer />

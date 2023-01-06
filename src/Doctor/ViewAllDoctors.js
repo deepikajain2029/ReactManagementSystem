@@ -3,10 +3,11 @@ import Table from 'react-bootstrap/Table';
 import { AiFillDelete, AiFillEdit } from 'react-icons/ai';
 import { useNavigate, useLocation } from 'react-router-dom';
 
-//testing started
 const ViewAllDoctors = () => {
   const [doctorView, setdoctorView] = useState([]);
   const navigate = useNavigate();
+
+
   const fetchDoctorDetails = async () => {
     const data = await fetch("http://localhost:5000/doctor")
     const parsedData = await data.json()
@@ -14,35 +15,26 @@ const ViewAllDoctors = () => {
   }
   const deleteDoctor = async (id) => {
     const data = await fetch(`http://localhost:5000/doctor/${id}`, { method: 'delete' })
-
-    const response = await data.json();
-
     fetchDoctorDetails();
   }
-  const editDoctor = async (id) => {
-
-    const data = await fetch(`http://localhost:5000/doctor/${id}`)
-
-    const response = await data.json();
-
-    console.log(response)
-
-    navigate("/adddoctor", { state: { adddoctor: response } })
-
-  }
-  const getDoctorByName=async(dctName)=>{
-    console.log(dctName);
-    const data=await fetch(`http://localhost:5000/doctor/${dctName}`)
-
-     const response =await data.json();
-
-     console.log(response)
-
-    // navigate("/updatetodo" , {state:{todo:response}})
-
+  const handleSelect = async (e) => {
+    e.preventDefault();
+    const data1 = await fetch("http://localhost:5000/doctor")
+    const parsedData1 = await data1.json()
+    if (!e.target.value) {
+      setdoctorView(parsedData1)
+    }
+    else{
+    let filtered = parsedData1.filter(d => d.name.toLowerCase().includes(e.target.value.toLowerCase() ))
+    setdoctorView(filtered)
+    }
 }
+  const editDoctor = async (id) => {
+    const data = await fetch(`http://localhost:5000/doctor/${id}`)
+    const response = await data.json();
+    navigate("/adddoctor", { state: { adddoctor: response } })
+  }
   useEffect(() => {
-
     fetchDoctorDetails()
   }, [])
   return (
@@ -55,12 +47,12 @@ const ViewAllDoctors = () => {
               <div className="card-header">
                 <form className="d-none d-md-inline-block" >
                   <div className="input-group" >
-                    <input className="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
-                    <button className="btn btn-primary" onClick={()=>getDoctorByName(adddoctor.name)} id="btnNavbarSearch" type="button"><i className="fas fa-search"></i></button>
+                    <input className="form-control" type="text"  onSelect={handleSelect} placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+                    <button className="btn btn-primary"  id="btnNavbarSearch" type="button"><i className="fas fa-search"></i></button>
                   </div>
                 </form>
               </div>
-              <Table striped bordered hover>
+              <Table striped bordered hover responsive>
                 <thead style={{ "background-color": "#0d6efd" }}>
                   <tr>
                     <th>#</th>
@@ -89,7 +81,6 @@ const ViewAllDoctors = () => {
                         <AiFillEdit onClick={() => editDoctor(adddoctor.id)}></AiFillEdit>{'   '}
                         <AiFillDelete onClick={() => deleteDoctor(adddoctor.id)}></AiFillDelete></td>
                     </tr>
-
                   })}
                 </tbody>
               </Table>
