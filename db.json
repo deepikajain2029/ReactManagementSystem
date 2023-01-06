@@ -30,7 +30,7 @@
   ],
   "Doctor": [
     {
-      "name": "Vikash Shukla",
+      "name": "Vikash Shukla Reddy",
       "address1": "Noida",
       "address2": "Noida India",
       "specialist": "Neonatologist",
@@ -60,16 +60,6 @@
       "id": 3
     },
     {
-      "name": "Kamlesh",
-      "address1": "fdsf",
-      "address2": "fdsf",
-      "specialist": "fdsf",
-      "mobile": "65767567",
-      "degree": "df",
-      "doctoremailaddress": "test@test.com",
-      "id": 7
-    },
-    {
       "name": "Nikhil J",
       "address1": "dasd",
       "address2": "dsad",
@@ -78,16 +68,6 @@
       "degree": "ffdgdgf",
       "doctoremailaddress": "test@test.com",
       "id": 8
-    },
-    {
-      "name": "Deepika Jain",
-      "address1": "sdf",
-      "address2": "fdsf",
-      "specialist": "dsf",
-      "mobile": "455435",
-      "degree": "dsffd",
-      "doctoremailaddress": "test@test.com",
-      "id": 9
     },
     {
       "name": "Neha kapadia",
@@ -130,7 +110,7 @@
       "id": 14
     },
     {
-      "name": "Tanisha jain",
+      "name": "Tanisha jain1234",
       "address1": "555 usha nagar ext",
       "address2": "home",
       "specialist": "Skin",
@@ -158,6 +138,26 @@
       "degree": "MBA,BBA",
       "doctoremailaddress": "kashish.N@gmail.com",
       "id": 17
+    },
+    {
+      "name": "Test",
+      "address1": "dsad",
+      "address2": "dsad",
+      "specialist": "sad",
+      "mobile": "546456456",
+      "degree": "fdsf",
+      "doctoremailaddress": "tes@test.com",
+      "id": 18
+    },
+    {
+      "name": "dsf",
+      "address1": "dsf",
+      "address2": "fds",
+      "specialist": "fdsf",
+      "mobile": "767",
+      "degree": "dfsdsf",
+      "doctoremailaddress": "tes@test.com",
+      "id": 19
     }
   ],
   "Patient": [
@@ -217,6 +217,10 @@
     {
       "id": 7,
       "name": "Filariasis"
+    },
+    {
+      "name": "allergy1",
+      "id": 8
     }
   ],
   "Medicine": [
@@ -270,7 +274,7 @@
       "id": 1,
       "disease_id": 2,
       "patient_id": 3,
-      "suffring_date": "01/01/2023 to 03/01/2023",
+      "suffering_date": "2023-01-12",
       "medicine_id": 6,
       "doctor_id": 2
     },
@@ -278,9 +282,33 @@
       "id": 2,
       "disease_id": 4,
       "patient_id": 2,
-      "suffring_date": "01/01/2023 to 03/01/2023",
+      "suffering_date": "2023-01-12",
       "medicine_id": 9,
       "doctor_id": 3
+    },
+    {
+      "doctor_id": "11",
+      "disease_id": "4",
+      "patient_id": "2",
+      "suffering_date": "2023-01-12",
+      "medicine_id": "4",
+      "id": 3
+    },
+    {
+      "doctor_id": "3",
+      "disease_id": "2",
+      "patient_id": "3",
+      "suffering_date": "2023-01-05",
+      "medicine_id": "3",
+      "id": 4
+    },
+    {
+      "doctor_id": "14",
+      "disease_id": "3",
+      "patient_id": "3",
+      "suffering_date": "2023-01-20",
+      "medicine_id": "7",
+      "id": 5
     }
   ]
 }

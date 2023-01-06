@@ -83,7 +83,19 @@ const Header = () => {
                                 <nav className="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                                     <a className="nav-link" href="layout-static.html">Add Patient</a>
                                     <a className="nav-link" href="layout-sidenav-light.html">View All Patients</a>
-                                    <a className="nav-link" href="layout-sidenav-light.html">Patients Disease</a>
+                                </nav>
+                            </div>
+                             {/* Patient Disease Area */}
+                             <a className="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePatientPages" aria-expanded="false" aria-controls="collapsePages">
+                                <div className="sb-nav-link-icon"><i className="fas fa-book-open"></i></div>
+                                Patient Disease
+                                <div className="sb-sidenav-collapse-arrow"><i className="fas fa-angle-down"></i></div>
+                            </a>
+                            <div className="collapse" id="collapsePatientPages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+                                <nav className="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                    <a className="nav-link" href="/addpatientdisease">Add Patient Disease</a>
+                                    <a className="nav-link" href="/viewpatientdisease">View Patients Disease</a>
+
                                 </nav>
                             </div>
                             {/* Disease Area */}
@@ -94,8 +106,8 @@ const Header = () => {
                             </a>
                             <div className="collapse" id="collapseDisease" aria-labelledby="headingThree" data-bs-parent="#sidenavAccordion">
                                 <nav className="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                    <a className="nav-link" href="layout-static.html">Add Disease</a>
-                                    <a className="nav-link" href="layout-static.html">View All Disease</a>
+                                    <a className="nav-link" href="/adddisease">Add Disease</a>
+                                    <a className="nav-link" href="/viewalldiseases">View All Disease</a>
                                     
                                 </nav>
                             </div>
@@ -107,17 +119,14 @@ const Header = () => {
                             </a>
                             <div className="collapse" id="collapseMedicine" aria-labelledby="headingFour" data-bs-parent="#sidenavAccordion">
                                 <nav className="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                    <a className="nav-link" href="layout-static.html">Add Medicine</a>
-                                    <a className="nav-link" href="layout-static.html">View All Medicine</a>
+                                    <a className="nav-link" href="/addmedicine">Add Medicine</a>
+                                    <a className="nav-link" href="/viewallmedicines">View All Medicine</a>
                                 </nav>
                             </div>
                            
                         </div>
                     </div>
-                    <div className="sb-sidenav-footer">
-                        <div className="small">Logged in as:</div>
-                        Start Bootstrap
-                    </div>
+ 
                 </nav>
             </div>
             
