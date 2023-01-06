@@ -58,7 +58,7 @@ const AddPatient = () => {
           
         }
         
-        navigate('/viewalldoctors');
+        navigate('/viewallpatients');
       }
     };
     const onChangeHandler = (e) => {
@@ -82,7 +82,7 @@ const AddPatient = () => {
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicemail">
                   <Form.Label>Email Address</Form.Label>
-                  <Input id="dpatientemailaddress" name="patientemailaddress" required type="email" value={addPatient.doctoremailaddress} onChange={onChangeHandler}
+                  <Input id="email" name="email" required type="email" value={addPatient.email} onChange={onChangeHandler}
                     className="outline-primary" />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicAddress1">
