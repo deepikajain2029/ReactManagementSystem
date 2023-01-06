@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import Table from 'react-bootstrap/Table';
-import { Link } from 'react-router-dom';
+import {useAuthState} from 'react-firebase-hooks/auth'
+//import { auth } from "./firebase";
 
 const Dashboard = () => {
     const openNav = () => {
@@ -19,9 +20,9 @@ const Dashboard = () => {
                         <main>
                             <div className="container-fluid px-4">
                                 <h1 className="mt-4">Dashboard</h1>
-                                <ol className="breadcrumb mb-4">
+                                {/* <ol className="breadcrumb mb-4">
                                     <li className="breadcrumb-item active">Dashboard</li>
-                                </ol>
+                                </ol> */}
                                 <div className="row">
                                     <div className="col-xl-3 col-md-6">
                                         <div className="card bg-primary text-white mb-4">

@@ -1,6 +1,28 @@
-import React from 'react'
+import React, { useState } from "react";
+import {  useNavigate } from "react-router-dom";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firbase";
 
 const Login = () => {
+    const navigate = useNavigate();
+    const[email, setEmail]=useState("");
+    const[password, setPassword]=useState("");
+    const [errorMsg, setErrorMsg] = useState("");
+    const Signin=()=>{
+        if (!email || !password) {
+            setErrorMsg("Fill all fields");
+            return;
+        }
+        setErrorMsg("");
+
+        signInWithEmailAndPassword(auth, email, password)
+            .then(async (res) => {
+                navigate("/dashboard");
+            })
+            .catch((err) => {
+                setErrorMsg("You have entered wrong credential");
+            });
+    };
     return (
         <div className="bg-primary">
 
@@ -15,15 +37,16 @@ const Login = () => {
                                         <div className="card-body">
                                             <form>
                                                 <div className="form-floating mb-3">
-                                                    <input className="form-control" id="inputEmail" type="email" placeholder="name@example.com" />
+                                                    <input className="form-control" onChange={(event)=>setEmail(event.target.value)} id="inputEmail" type="email" placeholder="name@example.com" />
                                                     <label for="inputEmail">Email address</label>
                                                 </div>
                                                 <div className="form-floating mb-3">
-                                                    <input className="form-control" id="inputPassword" type="password" placeholder="Password" />
+                                                    <input className="form-control" onChange={(event)=>setPassword(event.target.value)} id="inputPassword" type="password" placeholder="Password" />
                                                     <label for="inputPassword">Password</label>
                                                 </div>
                                                 <div className="text-center">
-                                                    <button type="button" className="btn btn-primary">Login</button>
+                                                <b className="error">{errorMsg}</b><br/>
+                                                    <button type="button" onClick={Signin} className="btn btn-primary">Login</button>
                                                 </div>
                                             </form>
                                         </div>
@@ -47,8 +70,6 @@ const Login = () => {
                     </footer>
                 </div>
             </div>
-
-
         </div>
     )
 }
