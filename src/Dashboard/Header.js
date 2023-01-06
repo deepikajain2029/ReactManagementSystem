@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react'
 import Table from 'react-bootstrap/Table';
-import {Link  } from 'react-router-dom';
+import {Link,useNavigate  } from 'react-router-dom';
+import {useAuthState} from 'react-firebase-hooks/auth'
+import { auth } from "../firbase";
+import {signOut } from "firebase/auth"; 
 
 const Header = () => {
     const openNav = () => {
@@ -10,12 +13,27 @@ const Header = () => {
             localStorage.setItem('sb|sidebar-toggle', document.body.classList.contains('sb-sidenav-toggled'));
         }
     }
+
+    const[user, loading,error]=useAuthState(auth);
+    const navigate = useNavigate();
+    if (!user) {
+        navigate("/login") 
+         }
+    const Signout=()=>{
+        signOut(auth).then(() => {
+            navigate("/login");
+          }).catch((error) => {
+            // An error happened.
+          });
+    }
   return (
     <>
 
     <div className="sb-nav-fixed">
         <nav className="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+            
             <button className="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" onClick={openNav} id="sidebarToggle" href="#!"><i className="fas fa-bars"></i></button>
+
             <a className="navbar-brand ps-3" href="/dashboard">Patient Management System</a>
             <form className="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
                 
@@ -28,7 +46,7 @@ const Header = () => {
                         <li><a className="dropdown-item" href="#!">Update Password</a></li>
                         <li><a className="dropdown-item" href="#!">Add Admin</a></li>
                         <li><hr className="dropdown-divider" /></li>
-                        <li><a className="dropdown-item" href="#!">Logout</a></li>
+                        <li><a className="dropdown-item" onClick={Signout} href="#!">Logout</a></li>
                     </ul>
                 </li>
             </ul>
