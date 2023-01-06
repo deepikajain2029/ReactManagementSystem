@@ -227,6 +227,10 @@
     {
       "id": 7,
       "name": "Filariasis"
+    },
+    {
+      "name": "allergy1",
+      "id": 8
     }
   ],
   "Medicine": [
