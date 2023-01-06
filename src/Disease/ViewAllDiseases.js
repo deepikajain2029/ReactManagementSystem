@@ -1,16 +1,69 @@
 import React, { useState, useEffect } from 'react'
-import Table from 'react-bootstrap/Table';
+import DataTable from 'react-data-table-component'
 import { AiFillDelete, AiFillEdit } from 'react-icons/ai';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 const ViewAllDiseases = () => {
+
+    const [search, SetSearch] = useState("");
+
     const [diseaseView, setdiseaseView] = useState([]);
+
     const navigate = useNavigate();
+
     const fetchDiseaseDetails = async () => {
+
         const data = await fetch("http://localhost:5000/Disease")
+
         const parsedData = await data.json()
+
         setdiseaseView(parsedData)
+
     }
+
+    const columns = [
+
+
+
+        {
+
+            name: "Name",
+
+            selector: (row) => row.name,
+
+            sortable: true,
+
+        },
+
+        {
+
+            name: "Edit",
+
+            cell: (row) =>
+
+            (
+
+                <AiFillEdit onClick={() => editDisease(row.id)}></AiFillEdit>
+
+            ),
+
+        },
+
+        {
+
+            name: "Delete",
+
+            cell: (row) =>
+
+            (
+
+                <AiFillDelete onClick={() => deleteDisease(row.id)}></AiFillDelete>
+
+            ),
+
+        }
+
+    ]
     const deleteDisease = async (id) => {
         const data = await fetch(`http://localhost:5000/Disease/${id}`, { method: 'delete' })
 
@@ -18,6 +71,7 @@ const ViewAllDiseases = () => {
 
         fetchDiseaseDetails();
     }
+
     const editDisease = async (id) => {
 
         const data = await fetch(`http://localhost:5000/Disease/${id}`)
@@ -29,61 +83,69 @@ const ViewAllDiseases = () => {
         navigate("/adddisease", { state: { adddisease: response } })
 
     }
-    const getDiseaseByName = async (diseaseName) => {
-        console.log(diseaseName);
-        const data = await fetch(`http://localhost:5000/Disease/${diseaseName}`)
 
-        const response = await data.json();
-
-        console.log(response)
-
-        // navigate("/updatetodo" , {state:{todo:response}})
-
-    }
     useEffect(() => {
 
-        fetchDiseaseDetails()
-    }, [])
+        fetchDiseaseDetails();
+
+    }, []
+
+    );
+
+    useEffect(() => {
+
+        let filtered = diseaseView.filter(d => d.name.toLowerCase().includes(search.toLowerCase()))
+
+        setdiseaseView(filtered)
+
+    }, [search]
+
+    )
     return (
         <div className="sb-nav-fixed">
-            <div className="container " >
-                <div id="layoutSidenav">
-                    <div id="layoutSidenav_content">
-                        <div class="row">
-                            <h2 class="text-center">View All Disease</h2>
-                            <div className="card-header">
-                                <form className="d-none d-md-inline-block" >
-                                    <div className="input-group" >
-                                        <input className="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
-                                        <button className="btn btn-primary" id="btnNavbarSearch" type="button"><i className="fas fa-search"></i></button>
-                                    </div>
-                                </form>
-                            </div>
-                            <Table striped bordered hover>
-                                <thead style={{ "background-color": "#0d6efd" }}>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Name</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {diseaseView.map((adddisease) => {
-                                        return <tr>
-                                            <td>{adddisease.id}</td>
-                                            <td>{adddisease.name}</td>
-                                            <td>
-                                                <AiFillEdit onClick={() => editDisease(adddisease.id)}></AiFillEdit>{'   '}
-                                                <AiFillDelete onClick={() => deleteDisease(adddisease.id)}></AiFillDelete></td>
-                                        </tr>
 
-                                    })}
-                                </tbody>
-                            </Table>
+            <div className="container " >
+
+                <div id="layoutSidenav">
+
+                    <div id="layoutSidenav_content">
+
+                        <div className="row">
+
+                            <DataTable title="View All Disease"
+
+                                columns={columns}
+
+                                data={diseaseView}
+
+                                pagination
+
+                                fixedHeader
+
+                                fixedHeaderScrollHeight='450px'
+
+                                selectableRowsHighlight
+
+                                highlightOnHover
+
+                                subHeader
+
+                                subHeaderComponent={<input type="text" placeholder='search by name'
+
+                                    value={search}
+
+                                    onChange={(e) => SetSearch(e.target.value)} />}
+
+                            />
+
                         </div>
+
                     </div>
+
                 </div>
+
             </div>
+
         </div>
     )
 }

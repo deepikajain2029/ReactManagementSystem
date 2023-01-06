@@ -63,8 +63,8 @@ const Header = () => {
                             </a>
                             <div className="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                                 <nav className="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                    <a className="nav-link" href="layout-static.html">Add Patient</a>
-                                    <a className="nav-link" href="layout-sidenav-light.html">View All Patients</a>
+                                    <a className="nav-link" href="/addpatient">Add Patient</a>
+                                    <a className="nav-link" href="/viewallpatients">View All Patients</a>
                                     <a className="nav-link" href="layout-sidenav-light.html">Patients Disease</a>
                                 </nav>
                             </div>

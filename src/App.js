@@ -2,7 +2,6 @@
 import './App.css';
 import Dashboard from './Dashboard/Dashboard';
 import {  Routes, Route } from 'react-router-dom';
-import Login from './Dashboard/Login';
 import AddDoctor from './Doctor/AddDoctor';
 import Header from './Dashboard/Header';
 import Footer from './Dashboard/Footer';
@@ -11,6 +10,8 @@ import AddDisease from './Disease/AddDisease';
 import ViewAllDiseases from './Disease/ViewAllDiseases';
 import AddMedicine from './Medicine/AddMedicine';
 import ViewAllMedicines from './Medicine/ViewAllMedicines';
+import AddPatient from './Patient/AddPatient';
+import ViewAllPatient from './Patient/ViewAllPatient';
 
 function App() {
   return (
@@ -25,6 +26,8 @@ function App() {
           <Route path="viewalldiseases" element={<ViewAllDiseases />}></Route>
           <Route path="addmedicine" element={<AddMedicine/>}></Route>
           <Route path="viewallmedicines" element={<ViewAllMedicines />}></Route>
+          <Route path="addpatient" element={<AddPatient/>}></Route>
+          <Route path="viewallpatients" element={<ViewAllPatient />}></Route>        
         </Route>
       </Routes>
       <Footer />
