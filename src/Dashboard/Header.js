@@ -65,7 +65,19 @@ const Header = () => {
                                 <nav className="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                                     <a className="nav-link" href="layout-static.html">Add Patient</a>
                                     <a className="nav-link" href="layout-sidenav-light.html">View All Patients</a>
-                                    <a className="nav-link" href="layout-sidenav-light.html">Patients Disease</a>
+                                </nav>
+                            </div>
+                             {/* Patient Disease Area */}
+                             <a className="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePatientPages" aria-expanded="false" aria-controls="collapsePages">
+                                <div className="sb-nav-link-icon"><i className="fas fa-book-open"></i></div>
+                                Patient Disease
+                                <div className="sb-sidenav-collapse-arrow"><i className="fas fa-angle-down"></i></div>
+                            </a>
+                            <div className="collapse" id="collapsePatientPages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+                                <nav className="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                    <a className="nav-link" href="/addpatientdisease">Add Patient Disease</a>
+                                    <a className="nav-link" href="/viewpatientdisease">View Patients Disease</a>
+
                                 </nav>
                             </div>
                             {/* Disease Area */}
@@ -96,10 +108,7 @@ const Header = () => {
                            
                         </div>
                     </div>
-                    <div className="sb-sidenav-footer">
-                        <div className="small">Logged in as:</div>
-                        Start Bootstrap
-                    </div>
+ 
                 </nav>
             </div>
             

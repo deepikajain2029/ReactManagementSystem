@@ -60,7 +60,7 @@ const AddDoctor = () => {
         const data = fetch(`http://localhost:5000/doctor`, requestOptions)
       }
       setSucMessage(true);
-      // navigate('/viewalldoctors');
+      navigate('/viewalldoctors');
     }
   };
   const onChangeHandler = (e) => {
@@ -75,7 +75,6 @@ const AddDoctor = () => {
       <div className="container " >
         <div id="layoutSidenav">
           <div id="layoutSidenav_content">
-         
             <Form noValidate validated={validated} onSubmit={submitDoctorDetails}>
               <h2 style={{ textAlign: 'center' }}>{location.state != null ? 'Edit Doctor' : 'Add Doctor'}</h2>
               {SucMessage && <Alert variant="success">Doctor Saved !</Alert>}
@@ -114,7 +113,7 @@ const AddDoctor = () => {
                 <Input id="degree" name="degree" type="text" required value={adddoctor.degree} onChange={onChangeHandler}
                   className="outline-primary" />
               </Form.Group>
-              <div style={{ "textAlign": "center" }}>
+              <div style={{ "textAlign": "right" }}>
                 <Button variant="primary" type="submit" >{location.state != null ? 'Update' : 'Submit'}</Button>
               </div>
             </Form>
