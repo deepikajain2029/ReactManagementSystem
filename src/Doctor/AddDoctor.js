@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Button from 'react-bootstrap/Button';
 import { useNavigate, useLocation } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
-import { Input,Alert } from 'reactstrap'
+import { Input, Alert } from 'reactstrap'
 
 const AddDoctor = () => {
   const location = useLocation()
@@ -40,8 +40,8 @@ const AddDoctor = () => {
             doctoremailaddress: adddoctor.doctoremailaddress
           })
         }
-        const data= fetch(`http://localhost:5000/doctor/${adddoctor.id}`, requestOptions)
-        
+        const data = fetch(`http://localhost:5000/doctor/${adddoctor.id}`, requestOptions)
+
       }
       else {
         const requestOptions = {
@@ -57,7 +57,20 @@ const AddDoctor = () => {
             doctoremailaddress: adddoctor.doctoremailaddress
           })
         }
-        const data = fetch(`http://localhost:5000/doctor`, requestOptions)
+        const data = fetch(`http://localhost:5000/doctor`, requestOptions).then(data => data.json())
+          .then(data => {
+            if (data.id > 0) {
+              const roleOptions = {
+                'method': 'POST',
+                'headers': { "content-type": "application/json" },
+                'body': JSON.stringify({
+                  email_address: data.doctoremailaddress,
+                  role: "doctor",
+                })
+              }
+              const data = fetch(`http://localhost:5000/Roles`, roleOptions)
+            }
+          })
       }
       setSucMessage(true);
       navigate('/viewalldoctors');
@@ -113,8 +126,8 @@ const AddDoctor = () => {
                 <Input id="degree" name="degree" type="text" required value={adddoctor.degree} onChange={onChangeHandler}
                   className="outline-primary" />
               </Form.Group>
-              <div style={{ "textAlign": "right" }}>
-                <Button variant="primary" type="submit" >{location.state != null ? 'Update' : 'Submit'}</Button>
+              <div style={{ "textAlign": "left" }}>
+                <Button variant="primary" type="submit" >{location.state != null ? 'Update' : 'Save'}</Button>
               </div>
             </Form>
           </div>

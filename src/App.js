@@ -15,9 +15,12 @@ import AddPatient from './Patient/AddPatient';
 import ViewAllPatient from './Patient/ViewAllPatient';
 import AddPatientDisease from './Patient Disease/AddPatientDisease';
 import ViewPatientsDisease from './Patient Disease/ViewPatientsDisease';
+import DoctorPatientHistory from './Doctor/DoctorPatientHistory';
+import { useState } from 'react';
 
 function App() {
   let location = useLocation();
+  const [role,setRole]=useState("patient")
   return (
     <div>
         {location.pathname !== '/login' && <Header/>}
@@ -35,6 +38,7 @@ function App() {
           <Route path="addpatientdisease" element={<AddPatientDisease />}></Route>
           <Route path="viewpatientdisease" element={<ViewPatientsDisease />}></Route>
           <Route path="/viewalldoctors" element={<ViewAllDoctors />}></Route>
+          <Route path="/viewdoctorpatienthistory" element={<DoctorPatientHistory />}></Route>
         </Routes>
         {location.pathname !== '/login'  && <Footer/>}
     </div>
