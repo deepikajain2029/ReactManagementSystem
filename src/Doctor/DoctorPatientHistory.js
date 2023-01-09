@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import DataTable from 'react-data-table-component'
-import { AiFillDelete, AiFillEdit } from 'react-icons/ai';
+import Button from 'react-bootstrap/Button';
 import { useNavigate, useLocation } from 'react-router-dom';
 
-const ViewPatientsDisease = () => {
+const DoctorPatientHistory = () => {
     const [search, SetSearch] = useState("");
     const [patientDiseaseView, setpatientDiseaseView] = useState([]);
+    const [doctorView, setdoctorView] = useState([]);
     const [diseaseView, setdiseaseView] = useState([]);
     const [patientView, setpatientView] = useState([]);
     const [medicineView, setmedicineView] = useState([]);
-    const [doctorView, setdoctorView] = useState([]);
     const navigate = useNavigate();
 
     const fetchPatientDiseaseDetails = async () => {
@@ -45,7 +45,7 @@ const ViewPatientsDisease = () => {
             sortable: true,
         },
         {
-            name: "Disease Name",
+            name: "Disease",
             selector: (row) => diseaseView.map((d) => {if(d.id==row.disease_id){ return (d.name)}}),
             sortable: true,
         },
@@ -55,22 +55,19 @@ const ViewPatientsDisease = () => {
             sortable: true,
         },
         {
-            name: "Medicine Name",
-            selector: (row) => medicineView.map((d) => {if(d.id==row.medicine_id){ return (d.name)}}),
-            sortable: true,
-        },
-        {
-            name: "Doctor Name",
-            selector: (row) => doctorView.map((d) => {if(d.id==row.doctor_id){ return (d.name)}}),
-            sortable: true,
+            name: "Action",
+            cell:(row)=>
+            (
+                <Button type="variant">Prescribe Medicine</Button>
+            ),
         }
     ]
     useEffect(() => {
-       fetchPatientDiseaseDetails();
-       fetchPatitents();
-       fetchDisease();
-       fetchMedicines();
-       fetchDoctors();
+        fetchPatientDiseaseDetails();
+        fetchDoctors()
+        fetchDisease()
+        fetchPatitents()
+        fetchMedicines()
     }, []
     );
     return (
@@ -79,7 +76,7 @@ const ViewPatientsDisease = () => {
                 <div id="layoutSidenav">
                     <div id="layoutSidenav_content">
                         <div className="row">
-                            <DataTable title="View All Patient Disease"
+                        <DataTable title="Patient History"
                                 columns={columns}
                                 data={patientDiseaseView}
                                 pagination
@@ -100,4 +97,4 @@ const ViewPatientsDisease = () => {
     )
 }
 
-export default ViewPatientsDisease
+export default DoctorPatientHistory
