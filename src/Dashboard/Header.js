@@ -3,7 +3,7 @@ import Table from 'react-bootstrap/Table';
 import {Link,useNavigate  } from 'react-router-dom';
 import {useAuthState} from 'react-firebase-hooks/auth'
 import { auth } from "../firbase";
-import {signOut } from "firebase/auth"; 
+import {signOut ,sendPasswordResetEmail} from "firebase/auth"; 
 
 const Header = () => {
     const openNav = () => {
@@ -26,6 +26,13 @@ const Header = () => {
             // An error happened.
           });
     }
+    const forgotPassword = () => {
+        sendPasswordResetEmail(auth, user.email).then(() => {
+            alert('please check your email...')
+          }).catch((error) => {
+            // An error happened.
+          });
+        }
   return (
     <>
 
@@ -43,8 +50,8 @@ const Header = () => {
                 <li className="nav-item dropdown">
                     <a className="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i className="fas fa-user fa-fw"></i></a>
                     <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a className="dropdown-item" href="#!">Update Password</a></li>
-                        <li><a className="dropdown-item" href="#!">Add Admin</a></li>
+                        <li><a className="dropdown-item" onClick={forgotPassword} href="#!">Update Password</a></li>
+                        <li><a className="dropdown-item" href="/addadmin">Add Admin</a></li>
                         <li><hr className="dropdown-divider" /></li>
                         <li><a className="dropdown-item" onClick={Signout} href="#!">Logout</a></li>
                     </ul>
@@ -82,7 +89,7 @@ const Header = () => {
                             <div className="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                                 <nav className="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                                     <a className="nav-link" href="/addpatient">Add Patient</a>
-                                    <a className="nav-link" href="/viewallpatients">View All Patients</a>
+                                    <a className="nav-link" href="/viewallpatients">View All Patients</a> 
                                 </nav>
                             </div>
                              {/* Patient Disease Area */}

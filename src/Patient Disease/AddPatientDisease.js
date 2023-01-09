@@ -81,6 +81,17 @@ const AddPatientDisease = () => {
                         <div className="row">
                             <Form onSubmit={submitDetails}>
                                 <h2 style={{ textAlign: 'center' }}>Add Patient Disease</h2>
+                                <Form.Group className="mb-3" controlId="formBasicDoctorName">
+                                    <Form.Label>Patient Name</Form.Label>
+                                    <div className='form-group'>
+                                        <select name="PatientName" required className="form-control" value={state.patientId} onChange={OnPatientChange}>
+                                        <option value="">--Please choose a patient--</option>
+                                            {patientView.map((pct) => {
+                                                return <option value={pct.id}>{pct.name}</option>
+                                            })}
+                                        </select>
+                                    </div>
+                                </Form.Group>
                                 <Form.Group className="mb-3">
                                     <Form.Label>Disease Name</Form.Label>
                                     <div className='form-group'>
@@ -93,12 +104,12 @@ const AddPatientDisease = () => {
                                     </div>
                                 </Form.Group>
                                 <Form.Group className="mb-3" controlId="formBasicDoctorName">
-                                    <Form.Label>Patient Name</Form.Label>
+                                    <Form.Label>Doctor Name</Form.Label>
                                     <div className='form-group'>
-                                        <select name="PatientName" required className="form-control" value={state.patientId} onChange={OnPatientChange}>
-                                        <option value="">--Please choose a patient--</option>
-                                            {patientView.map((pct) => {
-                                                return <option value={pct.id}>{pct.name}</option>
+                                        <select name="DoctorName" required className="form-control" value={state.doctorId} onChange={OnDoctorChange}>
+                                        <option value="">--Please choose a doctor--</option>
+                                            {doctorView.map((dct) => {
+                                                return <option value={dct.id}>{dct.name}</option>
                                             })}
                                         </select>
                                     </div>
@@ -120,19 +131,9 @@ const AddPatientDisease = () => {
                                         </select>
                                     </div>
                                 </Form.Group>
-                                <Form.Group className="mb-3" controlId="formBasicDoctorName">
-                                    <Form.Label>Doctor Name</Form.Label>
-                                    <div className='form-group'>
-                                        <select name="DoctorName" required className="form-control" value={state.doctorId} onChange={OnDoctorChange}>
-                                        <option value="">--Please choose a doctor--</option>
-                                            {doctorView.map((dct) => {
-                                                return <option value={dct.id}>{dct.name}</option>
-                                            })}
-                                        </select>
-                                    </div>
-                                </Form.Group>
+                               
                                 <div>
-                                    <Button variant="primary" type="submit" >Submit</Button>
+                                    <Button variant="primary" type="submit" >Save</Button>
                                 </div>
                             </Form>
                         </div>

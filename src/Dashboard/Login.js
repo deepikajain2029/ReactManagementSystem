@@ -8,6 +8,7 @@ const Login = () => {
     const[email, setEmail]=useState("");
     const[password, setPassword]=useState("");
     const [errorMsg, setErrorMsg] = useState("");
+    const today = new Date();
     const Signin=()=>{
         if (!email || !password) {
             setErrorMsg("Fill all fields");
@@ -24,7 +25,7 @@ const Login = () => {
             });
     };
     return (
-        <div className="bg-primary">
+        <div className="" style={{"background-color":"blue"}}>
 
             <div id="layoutAuthentication">
                 <div id="layoutAuthentication_content">
@@ -62,9 +63,8 @@ const Login = () => {
                 <div id="layoutAuthentication_footer">
                     <footer className="py-4 bg-light mt-auto">
                         <div className="container-fluid px-4">
-                            <div className="d-flex align-items-center justify-content-between small">
-                                <div className="text-muted">Copyright &copy; Your Website 2022</div>
-
+                            <div className="d-flex align-items-left justify-content-between small">
+                                <div className="text-muted">© {today.getFullYear()} Patient Management System. All Rights Reserved.</div>
                             </div>
                         </div>
                     </footer>
