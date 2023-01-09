@@ -83,9 +83,6 @@ const Header = () => {
                                 <nav className="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                                     <a className="nav-link" href="/addpatient">Add Patient</a>
                                     <a className="nav-link" href="/viewallpatients">View All Patients</a>
-                                    <a className="nav-link" href="layout-sidenav-light.html">Patients Disease</a>
-                                    <a className="nav-link" href="layout-static.html">Add Patient</a>
-                                    <a className="nav-link" href="layout-sidenav-light.html">View All Patients</a>
                                 </nav>
                             </div>
                              {/* Patient Disease Area */}
@@ -98,6 +95,7 @@ const Header = () => {
                                 <nav className="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                                     <a className="nav-link" href="/addpatientdisease">Add Patient Disease</a>
                                     <a className="nav-link" href="/viewpatientdisease">View Patients Disease</a>
+    
                                 </nav>
                             </div>
                             {/* Disease Area */}

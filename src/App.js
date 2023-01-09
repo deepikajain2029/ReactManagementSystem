@@ -15,6 +15,7 @@ import AddPatient from './Patient/AddPatient';
 import ViewAllPatient from './Patient/ViewAllPatient';
 import AddPatientDisease from './Patient Disease/AddPatientDisease';
 import ViewPatientsDisease from './Patient Disease/ViewPatientsDisease';
+import PatientDiseaseHistory from './Patient Disease/PatientDiseaseHistory';
 
 function App() {
   let location = useLocation();
@@ -34,6 +35,7 @@ function App() {
           <Route path="viewallpatients" element={<ViewAllPatient />}></Route>       
           <Route path="addpatientdisease" element={<AddPatientDisease />}></Route>
           <Route path="viewpatientdisease" element={<ViewPatientsDisease />}></Route>
+          <Route path="patientdiseasehistory" element={<PatientDiseaseHistory />}></Route>
           <Route path="/viewalldoctors" element={<ViewAllDoctors />}></Route>
         </Routes>
         {location.pathname !== '/login'  && <Footer/>}
