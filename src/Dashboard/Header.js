@@ -102,6 +102,7 @@ const Header = () => {
                                 <nav className="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                                     <a className="nav-link" href="/addpatientdisease">Add Patient Disease</a>
                                     <a className="nav-link" href="/viewpatientdisease">View Patients Disease</a>
+    
                                 </nav>
                             </div>
                             {/* Disease Area */}
