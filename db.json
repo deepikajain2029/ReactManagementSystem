@@ -158,6 +158,106 @@
       "degree": "dfsdsf",
       "doctoremailaddress": "tes@test.com",
       "id": 19
+    },
+    {
+      "name": "Medha Neema",
+      "address1": "mhow naka indore",
+      "address2": "indore",
+      "specialist": "Child Specialist",
+      "mobile": "8687876866",
+      "degree": "MB",
+      "doctoremailaddress": "test@test.com",
+      "id": 20
+    },
+    {
+      "name": "dff",
+      "address1": "sdsad",
+      "address2": "dsad",
+      "specialist": "sad",
+      "mobile": "768768678",
+      "degree": "cfdfdsf",
+      "doctoremailaddress": "tes@test.com",
+      "id": 21
+    },
+    {
+      "name": "S Kumar",
+      "address1": "dsfdsf",
+      "address2": "dsf",
+      "specialist": "fdsf",
+      "mobile": "789678769",
+      "degree": "ffggf",
+      "doctoremailaddress": "dee@gmail.com",
+      "id": 22
+    },
+    {
+      "name": "ritu",
+      "address1": "gfdgfd",
+      "address2": "gfdg",
+      "specialist": "fg",
+      "mobile": "898098089",
+      "degree": "dsfdsf",
+      "doctoremailaddress": "test@test.com",
+      "id": 23
+    },
+    {
+      "name": "fsdf",
+      "address1": "dsfdsffds",
+      "address2": "fdsf",
+      "specialist": "sdff",
+      "mobile": "879879789",
+      "degree": "hgfh",
+      "doctoremailaddress": "dsf@gmail.com",
+      "id": 24
+    },
+    {
+      "name": "TT",
+      "address1": "dsfdsf",
+      "address2": "fsdf",
+      "specialist": "fdf",
+      "mobile": "7876876875",
+      "degree": "cxvcxv",
+      "doctoremailaddress": "test@test.com",
+      "id": 25
+    },
+    {
+      "name": "ds",
+      "address1": "dsf",
+      "address2": "sdf",
+      "specialist": "sdf",
+      "mobile": "67878",
+      "degree": "fdg",
+      "doctoremailaddress": "dsf@gmail.com",
+      "id": 26
+    },
+    {
+      "name": "dsf",
+      "address1": "fdsf",
+      "address2": "dsf",
+      "specialist": "fsdf",
+      "mobile": "765756765",
+      "degree": "fdgdfg",
+      "doctoremailaddress": "tes@test.com",
+      "id": 27
+    },
+    {
+      "name": "fds",
+      "address1": "fdsf",
+      "address2": "dsf",
+      "specialist": "dsf",
+      "mobile": "877",
+      "degree": "hghgh",
+      "doctoremailaddress": "test@test.com",
+      "id": 28
+    },
+    {
+      "name": "Yamini gautam",
+      "address1": "test",
+      "address2": "fdsf",
+      "specialist": "dsf",
+      "mobile": "8768768",
+      "degree": "hgfhgfh",
+      "doctoremailaddress": "yamini@gamil.com",
+      "id": 29
     }
   ],
   "Patient": [
@@ -187,6 +287,22 @@
       "address2": "Noida India",
       "cityid": 23,
       "mobile": "9044407665"
+    },
+    {
+      "name": "Deepika Sharma",
+      "email": "deepikasharmacloud@gmail.com",
+      "address1": "test123",
+      "address2": "test12345",
+      "mobile": "7687689789",
+      "id": 4
+    },
+    {
+      "name": "Tanisha jain",
+      "email": "deepikasharmacloud@gmail.com",
+      "address1": "asd",
+      "address2": "dsad",
+      "mobile": "87687878",
+      "id": 5
     }
   ],
   "Disease": [
@@ -273,7 +389,7 @@
     {
       "id": 1,
       "disease_id": 2,
-      "patient_id": 3,
+      "patient_id": 4,
       "suffering_date": "2023-01-12",
       "medicine_id": 6,
       "doctor_id": 2
@@ -289,7 +405,7 @@
     {
       "doctor_id": "11",
       "disease_id": "4",
-      "patient_id": "2",
+      "patient_id": "5",
       "suffering_date": "2023-01-12",
       "medicine_id": "4",
       "id": 3
@@ -305,10 +421,27 @@
     {
       "doctor_id": "14",
       "disease_id": "3",
-      "patient_id": "3",
+      "patient_id": "5",
       "suffering_date": "2023-01-20",
       "medicine_id": "7",
       "id": 5
+    }
+  ],
+  "Roles": [
+    {
+      "id": 1,
+      "email_address": "deepika.jain@yash.com",
+      "role": "admin"
+    },
+    {
+      "email_address": "yamini@gamil.com",
+      "role": "doctor",
+      "id": 2
+    },
+    {
+      "email_address": "deepikasharmacloud@gmail.com",
+      "role": "patient",
+      "id": 3
     }
   ]
 }
