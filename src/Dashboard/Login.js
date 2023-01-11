@@ -3,6 +3,8 @@ import {  useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firbase";
 
+
+
 const Login = () => {
     const navigate = useNavigate();
     const[email, setEmail]=useState("");
@@ -25,8 +27,7 @@ const Login = () => {
             });
     };
     return (
-        <div className="" style={{"background-color":"blue"}}>
-
+        <div className="background-image" style={{ backgroundImage: "URL(/static/media/backgroundImg.739dd2074172ecf35920.png)" }}>
             <div id="layoutAuthentication">
                 <div id="layoutAuthentication_content">
                     <main>

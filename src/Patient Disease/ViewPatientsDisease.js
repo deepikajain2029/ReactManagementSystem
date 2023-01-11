@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import DataTable from 'react-data-table-component'
 import { AiFillDelete, AiFillEdit } from 'react-icons/ai';
 import { useNavigate, useLocation } from 'react-router-dom';
-
+import "../styles.css";
 const ViewPatientsDisease = () => {
     const [search, SetSearch] = useState("");
     const [patientDiseaseView, setpatientDiseaseView] = useState([]);
@@ -41,12 +41,12 @@ const ViewPatientsDisease = () => {
 
         {
             name: "Patient Name",
-            selector: (row) => patientView.map((d) => {if(d.id==row.patient_id){ return (d.name)}}),
+            selector: (row) => patientView.map((d) => { if (d.id == row.patient_id) { return (d.name) } }),
             sortable: true,
         },
         {
             name: "Disease Name",
-            selector: (row) => diseaseView.map((d) => {if(d.id==row.disease_id){ return (d.name)}}),
+            selector: (row) => diseaseView.map((d) => { if (d.id == row.disease_id) { return (d.name) } }),
             sortable: true,
         },
         {
@@ -56,23 +56,45 @@ const ViewPatientsDisease = () => {
         },
         {
             name: "Medicine Name",
-            selector: (row) => medicineView.map((d) => {if(d.id==row.medicine_id){ return (d.name)}}),
+            selector: (row) => medicineView.map((d) => { if (d.id == row.medicine_id) { return (d.name) } }),
             sortable: true,
         },
         {
             name: "Doctor Name",
-            selector: (row) => doctorView.map((d) => {if(d.id==row.doctor_id){ return (d.name)}}),
+            selector: (row) => doctorView.map((d) => { if (d.id == row.doctor_id) { return (d.name) } }),
             sortable: true,
+        },
+        {
+            name: "Delete",
+            cell: (row) =>
+            (
+                <AiFillDelete onClick={() => deletePatientDisease(row.id)}></AiFillDelete>
+            ),
         }
     ]
     useEffect(() => {
-       fetchPatientDiseaseDetails();
-       fetchPatitents();
-       fetchDisease();
-       fetchMedicines();
-       fetchDoctors();
-    }, []
+        if (search == "") {
+            fetchPatientDiseaseDetails();
+            fetchPatitents();
+            fetchDisease();
+            fetchMedicines();
+            fetchDoctors();
+        }
+        else {
+          
+            let filtered = (doctorView.filter(d => d.name.toLowerCase().includes(search.toLowerCase()) 
+             
+            ))
+         
+        }
+
+    }, [search]
     );
+    const deletePatientDisease = async (id) => {
+        const data = await fetch(`http://localhost:5000/PatientDisease/${id}`, { method: 'delete' })
+        fetchPatientDiseaseDetails();
+    }
+   
     return (
         <div className="sb-nav-fixed">
             <div className="container " >

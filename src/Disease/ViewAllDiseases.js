@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react'
 import DataTable from 'react-data-table-component'
 import { AiFillDelete, AiFillEdit } from 'react-icons/ai';
 import { useNavigate, useLocation } from 'react-router-dom';
-
+import Swal from 'sweetalert2'
+import "../styles.css";
 const ViewAllDiseases = () => {
 
     const [search, SetSearch] = useState("");
@@ -23,11 +24,11 @@ const ViewAllDiseases = () => {
 
     const columns = [
 
-
-
         {
 
-            name: "Name",
+            id: "diseasename",
+
+            name: "Disease Name",
 
             selector: (row) => row.name,
 
@@ -36,6 +37,8 @@ const ViewAllDiseases = () => {
         },
 
         {
+
+            id: "edit",
 
             name: "Edit",
 
@@ -49,7 +52,11 @@ const ViewAllDiseases = () => {
 
         },
 
+
+
         {
+
+            id: "delete",
 
             name: "Delete",
 
@@ -65,9 +72,26 @@ const ViewAllDiseases = () => {
 
     ]
     const deleteDisease = async (id) => {
-        const data = await fetch(`http://localhost:5000/Disease/${id}`, { method: 'delete' })
-
-        const response = await data.json();
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const data =  fetch(`http://localhost:5000/Disease/${id}`, { method: 'delete' })
+                Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                )
+                window.location.reload(true)
+            }
+        })
+        
 
         fetchDiseaseDetails();
     }

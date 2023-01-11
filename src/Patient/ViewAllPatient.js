@@ -2,37 +2,31 @@ import React, { useState, useEffect } from 'react'
 import DataTable from 'react-data-table-component'
 import { AiFillDelete, AiFillEdit } from 'react-icons/ai';
 import { useNavigate, useLocation } from 'react-router-dom';
+import Swal from 'sweetalert2'
 
 const ViewAllPatient = () => {
 
     const [search, SetSearch] = useState("");
-
+    const [roleView, setRoleView] = useState([]);
     const [patientView, setpatientView] = useState([]);
 
     const navigate = useNavigate();
 
     const fetchPatientDetails = async () => {
-
         const data = await fetch("http://localhost:5000/Patient")
-
         const parsedData = await data.json()
-
         setpatientView(parsedData)
-
     }
-
+    const fetchRoles = async () => {
+        const data2 = await fetch("http://localhost:5000/Roles")
+        const parsedData1 = await data2.json()
+        setRoleView(parsedData1)
+    }
     const columns = [
-
-
-
         {
-
             name: "Name",
-
             selector: (row) => row.name,
-
             sortable: true,
-
         },
         {
 
@@ -87,25 +81,38 @@ const ViewAllPatient = () => {
         },
 
         {
-
             name: "Delete",
-
             cell: (row) =>
-
             (
-
-                <AiFillDelete onClick={() => deletePatient(row.id)}></AiFillDelete>
-
+                <AiFillDelete onClick={() => deletePatient(row.id, row.email)}></AiFillDelete>
             ),
-
         }
 
     ]
-    const deletePatient = async (id) => {
-        const data = await fetch(`http://localhost:5000/Patient/${id}`, { method: 'delete' })
-
-        const response = await data.json();
-
+    const deletePatient = async (id, email) => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const data =  fetch(`http://localhost:5000/Patient/${id}`, { method: 'delete' })
+                const items = roleView.filter(item => item.email_address == email);
+                if (items.length > 0) {
+                    const data1 =  fetch(`http://localhost:5000/Roles/${items[0].id}`, { method: 'delete' })
+                }
+                Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                )
+                window.location.reload(true)
+            }
+        })
         fetchPatientDetails();
     }
 
@@ -117,29 +124,28 @@ const ViewAllPatient = () => {
 
         console.log(response)
 
-        navigate("/addpatient" , { state: { addPatient: response } })
+        navigate("/addpatient", { state: { addPatient: response } })
 
         // navigate("/addpatient", { state: { addpatient: response } })
 
     }
 
     useEffect(() => {
-
-        fetchPatientDetails();
-
-    }, []
-
-    );
-
-    useEffect(() => {
-
-        let filtered = patientView.filter(d => d.name.toLowerCase().includes(search.toLowerCase()))
-
-        setpatientView(filtered)
-
+        if (search == "") {
+            fetchPatientDetails();
+            fetchRoles();
+        }
+        else {
+            let filtered = (patientView.filter(d => d.name.toLowerCase().includes(search.toLowerCase()) || d.email.toLowerCase().includes(search.toLowerCase())
+                || d.address1.toLowerCase().includes(search.toLowerCase())
+                || d.address2.toLowerCase().includes(search.toLowerCase())
+                || d.mobile.toLowerCase().includes(search.toLowerCase())
+            ))
+            setpatientView(filtered)
+        }
     }, [search]
-
     )
+
     return (
         <div className="sb-nav-fixed">
 

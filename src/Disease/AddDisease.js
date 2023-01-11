@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import { useNavigate, useLocation } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import { Input } from 'reactstrap'
-
+import Swal from 'sweetalert2'
 const AddDisease = () => {
 
     const location = useLocation()
@@ -36,7 +36,11 @@ const AddDisease = () => {
                     })
                 }
                 const data = fetch(`http://localhost:5000/Disease/${adddisease.id}`, requestOptions)
-
+                Swal.fire({
+                    title: 'Disease updated successfully...',
+                    icon: 'success',
+                    confirmButtonText: 'Ok'
+                  })
             }
             else {
                 const requestOptions = {
@@ -47,8 +51,13 @@ const AddDisease = () => {
                     })
                 }
                 const data = fetch(`http://localhost:5000/Disease`, requestOptions)
-
+                Swal.fire({
+                    title: 'Disease added successfully...',
+                    icon: 'success',
+                    confirmButtonText: 'Ok'
+                  })
             }
+           
             navigate('/viewalldiseases');
         }
     };
@@ -71,8 +80,9 @@ const AddDisease = () => {
                                     className="outline-primary" />
                             </Form.Group>
                             <br></br>
-                            <div style={{ "textAlign": "center" }}>
-                                <Button variant="primary" type="submit" >{location.state != null ? 'Update' : 'Submit'}</Button>
+                            <div style={{ "textAlign": "left" }}>
+                                <Button variant="primary" type="submit" >{location.state != null ? 'Update' : 'Save'}</Button>{'   '}
+                                <Button variant="secondary" onClick={() => navigate('/viewalldiseases')}>Cancel</Button>
                             </div>
                         </Form>
                     </div>
