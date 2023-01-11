@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Table from 'react-bootstrap/Table';
 import { useAuthState } from 'react-firebase-hooks/auth'
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation ,Link} from 'react-router-dom';
 import { AiFillDelete, AiFillEdit } from 'react-icons/ai';
 
 
@@ -145,7 +145,8 @@ const Dashboard = () => {
                                         <i className="fas fa-table me-1 "></i>
                                          Patient Details {' '}
                                         <form className="d-none d-md-inline-block" >
-                                            <div className="input-group" >
+                                            <div className="input-group">
+                                            <Link to='/viewallpatients'>View More...</Link>
                                             </div>
                                         </form>
                                     </div>}
@@ -153,7 +154,8 @@ const Dashboard = () => {
                                         <i className="fas fa-table me-1"></i>
                                          Doctor Details {' '}
                                         <form className="d-none d-md-inline-block" >
-                                            <div className="input-group" >
+                                            <div className="input-group">
+                                            <Link to='/viewalldoctors'>View More...</Link>
                                             </div>
                                         </form>
                                     </div>}
@@ -162,6 +164,7 @@ const Dashboard = () => {
                                          Medicine Details {' '}
                                         <form className="d-none d-md-inline-block" >
                                             <div className="input-group" >
+                                            <Link to='/viewallmedicines'>View More...</Link>
                                             </div>
                                         </form>
                                     </div>}
@@ -170,6 +173,7 @@ const Dashboard = () => {
                                          Disease Details {' '}
                                         <form className="d-none d-md-inline-block" >
                                             <div className="input-group" >
+                                            <Link to='/viewalldiseases'>View More...</Link>
                                             </div>
                                         </form>
                                     </div>}
@@ -186,7 +190,7 @@ const Dashboard = () => {
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                {patientView.map((addPatient) => {
+                                                {patientView.slice(0,10).map((addPatient) => {
                                                     return <tr>
                                                         <td>{addPatient.name}</td>
                                                         <td>{addPatient.email}</td>
@@ -205,7 +209,7 @@ const Dashboard = () => {
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                {doctorView.map((adddoctor) => {
+                                                {doctorView.slice(0,10).map((adddoctor) => {
                                                     return <tr>
                                                         <td>{adddoctor.name}</td>
                                                         <td>{adddoctor.doctoremailaddress}</td>
@@ -213,8 +217,9 @@ const Dashboard = () => {
                                                     </tr>
                                                 })}
                                             </tbody>
-
-                                        </Table>}
+                                           
+                                        </Table>
+                                        }
 
                                       {showMedicine && <Table striped bordered hover variant="success">
                                             <thead>
@@ -224,7 +229,7 @@ const Dashboard = () => {
                                             </thead>
 
                                             <tbody>
-                                                {medicineView.map((addmedicine) => {
+                                                {medicineView.slice(0,10).map((addmedicine) => {
                                                     return <tr>
                                                         <td>{addmedicine.name}</td>
                                                     </tr>
@@ -242,7 +247,7 @@ const Dashboard = () => {
                                             </thead>
 
                                             <tbody>
-                                                {diseaseView.map((adddisease) => {
+                                                {diseaseView.slice(0,10).map((adddisease) => {
                                                     return <tr>
                                                         <td>{adddisease.name}</td>
                                                     </tr>
@@ -256,7 +261,7 @@ const Dashboard = () => {
                                 </div>
                             </div>
                         </main>
-
+                        
                     </div>
                 </div>
 

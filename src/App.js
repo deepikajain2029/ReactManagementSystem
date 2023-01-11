@@ -28,6 +28,7 @@ function App() {
         {location.pathname !== '/login' && <Header/>}
         <Routes>
         <Route path="/login" element={<Login />}></Route>
+        <Route path="/" element={<Dashboard />}></Route>
           <Route path="/dashboard" element={<Dashboard />}></Route>
           <Route path="/adddoctor" element={<AddDoctor />}></Route>
           <Route path="/viewalldoctors" element={<ViewAllDoctors />}></Route>
