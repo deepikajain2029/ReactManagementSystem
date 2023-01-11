@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import Table from 'react-bootstrap/Table';
 import { useAuthState } from 'react-firebase-hooks/auth'
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation ,Link} from 'react-router-dom';
 import { AiFillDelete, AiFillEdit } from 'react-icons/ai';
 
 
 const Dashboard = () => {
     const [showDoctor,setshowDoctor]=useState(false)
     const [showMedicine,setshowMedicine]=useState(false)
-    const [showPatient,setshowPatient]=useState(false)
+    const [showPatient,setshowPatient]=useState(true)
     const [showDisease,setshowDisease]=useState(false)
 
     const [doctorView, setdoctorView] = useState([]);
@@ -96,8 +96,8 @@ const Dashboard = () => {
                 <div id="layoutSidenav">
                     <div id="layoutSidenav_content">
                         <main>
-                            <div className="container-fluid px-4">
-                                <h1 className="mt-4">Dashboard</h1>
+                            <div className="container-fluid px-4 ">
+                                <h1 className="mt-4" style={{color: 'dark'}}>Dashboard</h1>
                                 {/* <ol className="breadcrumb mb-4">
                                     <li className="breadcrumb-item active">Dashboard</li>
                                 </ol> */}
@@ -141,17 +141,47 @@ const Dashboard = () => {
                                 </div>
 
                                 <div className="card mb-4">
-                                    <div className="card-header">
-                                        <i className="fas fa-table me-1"></i>
-                                        Patients Details {' '}
+                                {showPatient && <div className="card-header bg-primary">
+                                        <i className="fas fa-table me-1 "></i>
+                                         Patient Details {' '}
                                         <form className="d-none d-md-inline-block" >
-                                            <div className="input-group" >
+                                            <div className="input-group">
+                                            <Link to='/viewallpatients'>View More...</Link>
                                             </div>
                                         </form>
-                                    </div>
+                                    </div>}
+                                    {showDoctor && <div className="card-header bg-warning">
+                                        <i className="fas fa-table me-1"></i>
+                                         Doctor Details {' '}
+                                        <form className="d-none d-md-inline-block" >
+                                            <div className="input-group">
+                                            <Link to='/viewalldoctors'>View More...</Link>
+                                            </div>
+                                        </form>
+                                    </div>}
+                                    {showMedicine && <div className="card-header bg-success">
+                                        <i className="fas fa-table me-1"></i>
+                                         Medicine Details {' '}
+                                        <form className="d-none d-md-inline-block" >
+                                            <div className="input-group" >
+                                            <Link to='/viewallmedicines'>View More...</Link>
+                                            </div>
+                                        </form>
+                                    </div>}
+                                    {showDisease && <div className="card-header bg-danger">
+                                        <i className="fas fa-table me-1"></i>
+                                         Disease Details {' '}
+                                        <form className="d-none d-md-inline-block" >
+                                            <div className="input-group" >
+                                            <Link to='/viewalldiseases'>View More...</Link>
+                                            </div>
+                                        </form>
+                                    </div>}
+                                    
+                                   
 
                                     <div className="card-body">
-                                    {showPatient &&  <Table striped bordered hover >
+                                    {showPatient && <Table striped bordered hover variant="primary">
                                             <thead>
                                                 <tr>
                                                     <th>Patient Name</th>
@@ -160,7 +190,7 @@ const Dashboard = () => {
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                {patientView.map((addPatient) => {
+                                                {patientView.slice(0,10).map((addPatient) => {
                                                     return <tr>
                                                         <td>{addPatient.name}</td>
                                                         <td>{addPatient.email}</td>
@@ -170,7 +200,7 @@ const Dashboard = () => {
                                             </tbody>
 
                                         </Table>}   
-                                       {showDoctor &&  <Table striped bordered hover >
+                                       {showDoctor &&  <Table striped bordered hover variant="warning">
                                             <thead>
                                                 <tr>
                                                     <th>Doctor Name</th>
@@ -179,7 +209,7 @@ const Dashboard = () => {
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                {doctorView.map((adddoctor) => {
+                                                {doctorView.slice(0,10).map((adddoctor) => {
                                                     return <tr>
                                                         <td>{adddoctor.name}</td>
                                                         <td>{adddoctor.doctoremailaddress}</td>
@@ -187,10 +217,11 @@ const Dashboard = () => {
                                                     </tr>
                                                 })}
                                             </tbody>
+                                           
+                                        </Table>
+                                        }
 
-                                        </Table>}
-
-                                      {showMedicine &&    <Table striped bordered hover>
+                                      {showMedicine && <Table striped bordered hover variant="success">
                                             <thead>
                                                 <tr>
                                                     <th>Medicine Name</th>
@@ -198,7 +229,7 @@ const Dashboard = () => {
                                             </thead>
 
                                             <tbody>
-                                                {medicineView.map((addmedicine) => {
+                                                {medicineView.slice(0,10).map((addmedicine) => {
                                                     return <tr>
                                                         <td>{addmedicine.name}</td>
                                                     </tr>
@@ -208,7 +239,7 @@ const Dashboard = () => {
 
 
                                         </Table>}
-                                        {showDisease &&    <Table striped bordered hover>
+                                        {showDisease &&  <Table striped bordered hover variant="danger">
                                             <thead>
                                                 <tr>
                                                     <th>Disease Name</th>
@@ -216,7 +247,7 @@ const Dashboard = () => {
                                             </thead>
 
                                             <tbody>
-                                                {diseaseView.map((adddisease) => {
+                                                {diseaseView.slice(0,10).map((adddisease) => {
                                                     return <tr>
                                                         <td>{adddisease.name}</td>
                                                     </tr>
@@ -230,7 +261,7 @@ const Dashboard = () => {
                                 </div>
                             </div>
                         </main>
-
+                        
                     </div>
                 </div>
 

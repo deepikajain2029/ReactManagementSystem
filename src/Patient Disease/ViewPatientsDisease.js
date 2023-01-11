@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react'
 import DataTable from 'react-data-table-component'
 import { AiFillDelete, AiFillEdit } from 'react-icons/ai';
 import { useNavigate, useLocation } from 'react-router-dom';
+import "../styles.css";
 
 const ViewPatientsDisease = () => {
+
     const [search, SetSearch] = useState("");
     const [patientDiseaseView, setpatientDiseaseView] = useState([]);
     const [diseaseView, setdiseaseView] = useState([]);
@@ -40,51 +42,105 @@ const ViewPatientsDisease = () => {
     const columns = [
 
         {
-            name: "Patient Name",
+            id: "patientname",
+            name:"Patients",
             selector: (row) => patientView.map((d) => {if(d.id==row.patient_id){ return (d.name)}}),
             sortable: true,
+            style: {
+                fontSize: '15px',
+                background:'#F3F3F3'
+              },
         },
         {
-            name: "Disease Name",
-            selector: (row) => diseaseView.map((d) => {if(d.id==row.disease_id){ return (d.name)}}),
+            id: "diseasename",
+            name: "Diseases",
+            selector: (row) => diseaseView.map((d) => { if (d.id == row.disease_id) { return (d.name) } }),
             sortable: true,
+            style: {
+                fontSize: '15px',
+                background:'#F3F3F3'
+              },
         },
         {
-            name: "Suffering Date",
+            id: "suffdate",
+            name: "Suff-Date",
             selector: (row) => row.suffering_date,
             sortable: true,
+            style: {
+                fontSize: '15px',
+                background:'#F3F3F3'
+              },
         },
         {
-            name: "Medicine Name",
-            selector: (row) => medicineView.map((d) => {if(d.id==row.medicine_id){ return (d.name)}}),
+            id: "mediciname",
+            name: "Medicines",
+            selector: (row) => medicineView.map((d) => { if (d.id == row.medicine_id) { return (d.name) } }),
             sortable: true,
+            style: {
+                fontSize: '15px',
+                background:'#F3F3F3'
+              },
         },
         {
-            name: "Doctor Name",
-            selector: (row) => doctorView.map((d) => {if(d.id==row.doctor_id){ return (d.name)}}),
+            id: "doctname",
+            name: "Doctors",
+            selector: (row) => doctorView.map((d) => { if (d.id == row.doctor_id) { return (d.name) } }),
             sortable: true,
+            style: {
+                fontSize: '15px',
+                background:'#F3F3F3'
+              },
+        },
+        {
+            id:"delete",
+            name: "Delete",
+            cell: (row) =>
+            (
+                <AiFillDelete style={{color:"red"}}  onClick={() => deletePatientDisease(row.id)}></AiFillDelete>
+            ),
+            style: {
+                background:'#F3F3F3',
+                fontSize: '20px',
+              },
         }
     ]
+      
+    
     useEffect(() => {
-       fetchPatientDiseaseDetails();
-       fetchPatitents();
-       fetchDisease();
-       fetchMedicines();
-       fetchDoctors();
-    }, []
+        if (search == "") {
+            fetchPatientDiseaseDetails();
+            fetchPatitents();
+            fetchDisease();
+            fetchMedicines();
+            fetchDoctors();
+        }
+        else {
+          
+            let filtered = (doctorView.filter(d => d.name.toLowerCase().includes(search.toLowerCase()) 
+             
+            ))
+         
+        }
+
+    }, [search]
     );
+    const deletePatientDisease = async (id) => {
+        const data = await fetch(`http://localhost:5000/PatientDisease/${id}`, { method: 'delete' })
+        fetchPatientDiseaseDetails();
+    }
+   
     return (
         <div className="sb-nav-fixed">
             <div className="container " >
                 <div id="layoutSidenav">
                     <div id="layoutSidenav_content">
                         <div className="row">
-                            <DataTable title="View All Patient Disease"
+                            <DataTable title="View All Patient Disease" 
                                 columns={columns}
                                 data={patientDiseaseView}
                                 pagination
                                 fixedHeader
-                                fixedHeaderScrollHeight='450px'
+                                fixedHeaderScrollHeight='350px'
                                 selectableRowsHighlight
                                 highlightOnHover
                                 subHeader

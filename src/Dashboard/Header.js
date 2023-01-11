@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { auth } from "../firbase";
 import { signOut, sendPasswordResetEmail } from "firebase/auth";
+import { FaHospitalSymbol,FaHospitalUser,FaDisease,FaWatchmanMonitoring ,FaFileMedical} from 'react-icons/fa';
 
 const Header = () => {
 

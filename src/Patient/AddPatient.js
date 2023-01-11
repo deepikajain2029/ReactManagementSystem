@@ -3,12 +3,15 @@ import Button from 'react-bootstrap/Button';
 import { useNavigate, useLocation } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import { Input } from 'reactstrap'
+import { auth } from "../firbase";
+import {createUserWithEmailAndPassword} from "firebase/auth"; 
+import Swal from 'sweetalert2'
 
 const AddPatient = () => {
   const location = useLocation()
 
   const [addPatient, setaddPatient] = useState({})
-
+  const [roleView, setRoleView] = useState([]);
   const [validated, setValidated] = useState(false);
   const navigate = useNavigate();
   const onChangeHandler = (e) => {
@@ -19,11 +22,15 @@ const AddPatient = () => {
     if (location.state != null) {
       setaddPatient(location.state.addPatient)
     }
-
+    fetchRoles();
   }, [])
+  const fetchRoles = async () => {
+    const data1 = await fetch("http://localhost:5000/Roles")
+    const parsedData1 = await data1.json()
+    setRoleView(parsedData1)
+  }
   const submitPatientDetails = (event) => {
     const form = event.currentTarget;
-    console.log(form.checkValidity())
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
@@ -43,39 +50,67 @@ const AddPatient = () => {
 
           })
         }
-        const data = fetch(`http://localhost:5000/Patient/${addPatient.id}`, requestOptions)
-
+        const data = fetch(`http://localhost:5000/Patient/${addPatient.id}`, requestOptions);
+        Swal.fire({
+          title: 'Patient updated successfully...',
+          icon: 'success',
+          confirmButtonText: 'Ok'
+        })
+        navigate('/viewallpatients');
       }
       else {
-        const requestOptions = {
-          'method': 'POST',
-          'headers': { "content-type": "application/json" },
-          'body': JSON.stringify({
-            name: addPatient.name,
-            email: addPatient.email,
-            address1: addPatient.address1,
-            address2: addPatient.address2,
-            mobile: addPatient.mobile
-          })
+        //To Check if email id already exists in role table 
+        const items = roleView.filter(item => item.email_address == addPatient.email);
+        if (items.length > 0) {
+
+          alert("email already exists")
+          event.preventDefault();
         }
-        const data = fetch(`http://localhost:5000/Patient`, requestOptions).then(data => data.json())
-          .then(data => {
-            if (data.id > 0) {
-              const roleOptions = {
-                'method': 'POST',
-                'headers': { "content-type": "application/json" },
-                'body': JSON.stringify({
-                  email_address: addPatient.email,
-                  role: "patient",
-                })
+        else{
+          const requestOptions = {
+            'method': 'POST',
+            'headers': { "content-type": "application/json" },
+            'body': JSON.stringify({
+              name: addPatient.name,
+              email: addPatient.email,
+              address1: addPatient.address1,
+              address2: addPatient.address2,
+              mobile: addPatient.mobile
+            })
+          }
+          const data = fetch(`http://localhost:5000/Patient`, requestOptions).then(data => data.json())
+            .then(data => {
+              if (data.id > 0) {
+                const roleOptions = {
+                  'method': 'POST',
+                  'headers': { "content-type": "application/json" },
+                  'body': JSON.stringify({
+                    email_address: addPatient.email,
+                    role: "patient",
+                  })
+                }
+                const data = fetch(`http://localhost:5000/Roles`, roleOptions)
+              
               }
-              const data = fetch(`http://localhost:5000/Roles`, roleOptions)
-            }
-          })
+              try {
+                createUserWithEmailAndPassword(auth, addPatient.email, "abc123");
+              
+                Swal.fire({
+                  title: 'Patient created successfully...',
+                  icon: 'success',
+                  confirmButtonText: 'Ok'
+                })
+              } catch (error) {
+                alert(error);
+              }
+            })
+            navigate('/viewallpatients');
+        }
+       
 
       }
 
-      navigate('/viewallpatients');
+    
     }
   };
   
@@ -95,7 +130,7 @@ const AddPatient = () => {
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicemail">
                 <Form.Label>Email Address</Form.Label>
-                <Input id="email" name="email" required type="email" value={addPatient.email} onChange={onChangeHandler}
+                <Input id="email" name="email" required type="email" disabled={location.state != null ? true : false}  value={addPatient.email} onChange={onChangeHandler}
                   className="outline-primary" />
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicAddress1">
@@ -116,7 +151,8 @@ const AddPatient = () => {
               </Form.Group>
 
               <div style={{ "textAlign": "left" }}>
-                <Button variant="primary" type="submit" >{location.state != null ? 'Update' : 'Save'}</Button>
+                <Button variant="primary" type="submit" >{location.state != null ? 'Update' : 'Save'}</Button>{'   '}
+                <Button variant="secondary" onClick={() => navigate('/viewallpatients')}>Cancel</Button>
               </div>
             </Form>
           </div>

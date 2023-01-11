@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import DataTable from 'react-data-table-component'
 import { AiFillDelete, AiFillEdit } from 'react-icons/ai';
 import { useNavigate, useLocation } from 'react-router-dom';
+import "../styles.css";
 
 const PatientDiseaseHistory = () => {
 
@@ -13,13 +14,9 @@ const PatientDiseaseHistory = () => {
     const navigate = useNavigate();
 
     const fetchDiseaseDetails = async () => {
-
         const data = await fetch("http://localhost:5000/Disease")
-
         const parsedData = await data.json()
-
         setdiseaseView(parsedData)
-
     }
     const fetchMedicineDetails = async () => {
 
@@ -43,27 +40,47 @@ const PatientDiseaseHistory = () => {
 
     const columns = [
         {
+            id: "doctname",
             name: "Doctor Name",
             selector: (row) => doctorView.map((d) => {if(d.id==row.doctor_id){ return (d.name)}}),
             // selector: (row) => row.doctor_id,
             sortable: true,
+            style: {
+                fontSize: '15px',
+                background:'#F3F3F3'
+              },
         },
         {
+            id: "diseasename",
             name: "Disease Name",
             selector: (row) => diseaseView.map((d) => {if(d.id==row.disease_id){ return (d.name)}}),
             // selector: (row) => row.disease_id,
             sortable: true,
+            style: {
+                fontSize: '15px',
+                background:'#F3F3F3'
+              },
         },
         {
+            id: "suffdate",
             name: "Suffering Date",
             selector: (row) => row.suffering_date,
             sortable: true,
+            style: {
+                fontSize: '15px',
+                background:'#F3F3F3'
+              },
         },
         {
+            id: "mediciname",
             name: "Medicine Name",
             selector: (row) => medicineView.map((d) => {if(d.id==row.medicine_id){ return (d.name)}}),
             // selector: (row) => row.medicine_id,
             sortable: true,
+            style: {
+                fontSize: '15px',
+                background:'#F3F3F3'
+              },
         }
         
     ]
@@ -85,7 +102,7 @@ const PatientDiseaseHistory = () => {
                                 data={patientDiseaseHistoryView}
                                 pagination
                                 fixedHeader
-                                fixedHeaderScrollHeight='450px'
+                                fixedHeaderScrollHeight='350px'
                                 selectableRowsHighlight
                                 highlightOnHover
                                 subHeader
