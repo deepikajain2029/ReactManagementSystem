@@ -30,166 +30,6 @@
   ],
   "Doctor": [
     {
-      "name": "Vikash Shukla Reddy",
-      "address1": "Noida",
-      "address2": "Noida India",
-      "specialist": "Neonatologist",
-      "mobile": "7654897634",
-      "degree": "MBBS,MD",
-      "doctoremailaddress": "test@test.com",
-      "id": 1
-    },
-    {
-      "id": 2,
-      "name": "Rakesh Sachan",
-      "address1": "Sector-6, Noida",
-      "address2": "Noida India",
-      "specialist": "Dentist",
-      "degree": "BDS",
-      "mobile": "8765789834",
-      "doctoremailaddress": "test@test.com"
-    },
-    {
-      "name": "Abhinav Sinha",
-      "address1": "Sector-32, Delhi",
-      "address2": "Delhi India",
-      "specialist": "Gastroenterologist",
-      "mobile": "9976453224",
-      "degree": "MBBS,MD,BBA",
-      "doctoremailaddress": "test@test.com",
-      "id": 3
-    },
-    {
-      "name": "Nikhil J",
-      "address1": "dasd",
-      "address2": "dsad",
-      "specialist": "fds",
-      "mobile": "656456",
-      "degree": "ffdgdgf",
-      "doctoremailaddress": "test@test.com",
-      "id": 8
-    },
-    {
-      "name": "Neha kapadia",
-      "address1": "Vijaynagar indore",
-      "address2": "Office",
-      "specialist": "test",
-      "mobile": "7665767567",
-      "degree": "ttt",
-      "doctoremailaddress": "test@test.com",
-      "id": 10
-    },
-    {
-      "name": "Mohit ",
-      "address1": "555 usha nagar ext",
-      "address2": "Office",
-      "specialist": "cardiologist",
-      "mobile": "34534543541",
-      "degree": "MBD",
-      "doctoremailaddress": "tes@test.com",
-      "id": 11
-    },
-    {
-      "name": "sdf",
-      "address1": "fdg",
-      "address2": "fdg",
-      "specialist": "gfdg",
-      "mobile": "64566",
-      "degree": "gh",
-      "doctoremailaddress": "tes@test.com",
-      "id": 13
-    },
-    {
-      "name": "Abhinav Sinhasadsad",
-      "address1": "Sector-32, Delhidsad",
-      "address2": "Delhi Indiadsad",
-      "specialist": "Gastroenterologistdsad",
-      "mobile": "99764532244324324",
-      "degree": "MBBS,MD324",
-      "doctoremailaddress": "test@test.comdsad",
-      "id": 14
-    },
-    {
-      "name": "Tanisha jain1234",
-      "address1": "555 usha nagar ext",
-      "address2": "home",
-      "specialist": "Skin",
-      "mobile": "564565466",
-      "degree": "test",
-      "doctoremailaddress": "deepika.jain@yash.com",
-      "id": 15
-    },
-    {
-      "name": "Tanisha jain 12345666",
-      "address1": "555 usha nagar ext 123445",
-      "address2": "home",
-      "specialist": "Skin 123123",
-      "mobile": "564565466",
-      "degree": "test123",
-      "doctoremailaddress": "deepika.jain@yash.com",
-      "id": 16
-    },
-    {
-      "name": "Kashish Neema Agrawal",
-      "address1": "c21 mall opp.",
-      "address2": "office",
-      "specialist": "Gynologist",
-      "mobile": "87687687678",
-      "degree": "MBA,BBA",
-      "doctoremailaddress": "kashish.N@gmail.com",
-      "id": 17
-    },
-    {
-      "name": "Test",
-      "address1": "dsad",
-      "address2": "dsad",
-      "specialist": "sad",
-      "mobile": "546456456",
-      "degree": "fdsf",
-      "doctoremailaddress": "tes@test.com",
-      "id": 18
-    },
-    {
-      "name": "dsf",
-      "address1": "dsf",
-      "address2": "fds",
-      "specialist": "fdsf",
-      "mobile": "767",
-      "degree": "dfsdsf",
-      "doctoremailaddress": "tes@test.com",
-      "id": 19
-    },
-    {
-      "name": "Medha Neema",
-      "address1": "mhow naka indore",
-      "address2": "indore",
-      "specialist": "Child Specialist",
-      "mobile": "8687876866",
-      "degree": "MB",
-      "doctoremailaddress": "test@test.com",
-      "id": 20
-    },
-    {
-      "name": "dff",
-      "address1": "sdsad",
-      "address2": "dsad",
-      "specialist": "sad",
-      "mobile": "768768678",
-      "degree": "cfdfdsf",
-      "doctoremailaddress": "tes@test.com",
-      "id": 21
-    },
-    {
-      "name": "S Kumar",
-      "address1": "dsfdsf",
-      "address2": "dsf",
-      "specialist": "fdsf",
-      "mobile": "789678769",
-      "degree": "ffggf",
-      "doctoremailaddress": "dee@gmail.com",
-      "id": 22
-    },
-    {
       "name": "ritu",
       "address1": "gfdgfd",
       "address2": "gfdg",
@@ -258,17 +98,36 @@
       "degree": "hgfhgfh",
       "doctoremailaddress": "yamini@gamil.com",
       "id": 29
+    },
+    {
+      "name": "Nikhil Y",
+      "address1": "65657",
+      "address2": "56767",
+      "specialist": "gffg",
+      "mobile": "77867878",
+      "degree": "gffdg",
+      "doctoremailaddress": "nikhil.y@gmail.com",
+      "id": 33
+    },
+    {
+      "name": "Test",
+      "address1": "dsf",
+      "address2": "fdsf",
+      "specialist": "sfdsf",
+      "mobile": "768768768",
+      "degree": "fdsfdsf",
+      "doctoremailaddress": "tes@test.com",
+      "id": 34
     }
   ],
   "Patient": [
     {
-      "id": 1,
       "name": "Ravi Kumar",
       "email": "ravikumar23@gmail.com",
       "address1": "D-6, Sector-2, Noida",
       "address2": "Noida India",
-      "cityid": 23,
-      "mobile": "7865435690"
+      "mobile": "42342344342",
+      "id": 1
     },
     {
       "id": 2,
@@ -276,7 +135,6 @@
       "email": "aman.singh@gmail.com",
       "address1": "B-15, Sector-22, Indaur ",
       "address2": "Indaur India",
-      "cityid": "05",
       "mobile": "8732908711"
     },
     {
@@ -285,7 +143,6 @@
       "email": "rajputamit007@gmail.com",
       "address1": "D-66, Sector-14, Noida",
       "address2": "Noida India",
-      "cityid": 23,
       "mobile": "9044407665"
     },
     {
@@ -298,17 +155,25 @@
     },
     {
       "name": "Tanisha jain",
-      "email": "deepikasharmacloud@gmail.com",
-      "address1": "asd",
-      "address2": "dsad",
-      "mobile": "87687878",
-      "id": 5
+      "email": "deepika.jain555@gmail.com",
+      "address1": "dsf",
+      "address2": "fsdf",
+      "mobile": "898979887989",
+      "id": 7
+    },
+    {
+      "name": "Test",
+      "email": "jaindeepika2029@gmail.com",
+      "address1": "555 usha nagar ext",
+      "address2": "fdsfdsf",
+      "mobile": "98980980980",
+      "id": 8
     }
   ],
   "Disease": [
     {
-      "id": 1,
-      "name": "Haemophilia"
+      "name": "Haemophilia",
+      "id": 1
     },
     {
       "id": 2,
@@ -337,20 +202,36 @@
     {
       "name": "allergy1",
       "id": 8
+    },
+    {
+      "name": "Fever",
+      "id": 9
+    },
+    {
+      "name": "Cancer",
+      "id": 10
+    },
+    {
+      "name": "test other dis",
+      "id": 11
+    },
+    {
+      "name": "Harpis Tech",
+      "id": 12
+    },
+    {
+      "name": "test",
+      "id": 13
+    },
+    {
+      "name": "fdsfdsf",
+      "id": 14
     }
   ],
   "Medicine": [
     {
-      "id": 1,
-      "name": "Antifibrinolytics"
-    },
-    {
-      "id": 2,
-      "name": "Fibrin sealant"
-    },
-    {
-      "id": 3,
-      "name": "Elbasvir"
+      "name": "Elbasvir",
+      "id": 3
     },
     {
       "id": 4,
@@ -373,16 +254,16 @@
       "name": "Velpatasvir"
     },
     {
-      "id": 9,
-      "name": "Vosevi"
-    },
-    {
       "id": 10,
       "name": "Pibrentasvir"
     },
     {
       "id": 11,
       "name": "Clarithromycin"
+    },
+    {
+      "name": "Testing Purpose",
+      "id": 12
     }
   ],
   "PatientDisease": [
@@ -400,7 +281,7 @@
       "patient_id": 2,
       "suffering_date": "2023-01-12",
       "medicine_id": 9,
-      "doctor_id": 3
+      "doctor_id": 2
     },
     {
       "doctor_id": "11",
@@ -411,37 +292,47 @@
       "id": 3
     },
     {
-      "doctor_id": "3",
-      "disease_id": "2",
-      "patient_id": "3",
-      "suffering_date": "2023-01-05",
-      "medicine_id": "3",
-      "id": 4
+      "doctor_id": "14",
+      "disease_id": 12,
+      "patient_id": "4",
+      "suffering_date": "2023-01-20",
+      "medicine_id": "11",
+      "id": 5
     },
     {
-      "doctor_id": "14",
-      "disease_id": "3",
-      "patient_id": "5",
-      "suffering_date": "2023-01-20",
-      "medicine_id": "7",
-      "id": 5
+      "doctor_id": "30",
+      "disease_id": "4",
+      "patient_id": "4",
+      "suffering_date": "2023-01-27",
+      "medicine_id": "6",
+      "id": 6
     }
   ],
   "Roles": [
     {
-      "id": 1,
-      "email_address": "deepika.jain@yash.com",
-      "role": "admin"
-    },
-    {
-      "email_address": "yamini@gamil.com",
-      "role": "doctor",
+      "email_address": "ravikumar23@gmail.com",
+      "role": "patient",
       "id": 2
     },
     {
-      "email_address": "deepikasharmacloud@gmail.com",
+      "email_address": "nikhil.y@gmail.com",
+      "role": "doctor",
+      "id": 4
+    },
+    {
+      "email_address": "deepikasharmacloud123@gmail.com",
+      "role": "doctor",
+      "id": 6
+    },
+    {
+      "email_address": "deepika.jain555@gmail.com",
       "role": "patient",
-      "id": 3
+      "id": 7
+    },
+    {
+      "email_address": "jaindeepika2029@gmail.com",
+      "role": "patient",
+      "id": 9
     }
   ]
 }

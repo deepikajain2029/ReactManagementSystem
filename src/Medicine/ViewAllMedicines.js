@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react'
 import DataTable from 'react-data-table-component'
 import { AiFillDelete, AiFillEdit } from 'react-icons/ai';
 import { useNavigate, useLocation } from 'react-router-dom';
+import Swal from 'sweetalert2'
 import "../styles.css";
-
 const ViewAllMedicines = () => {
 
     const [search, SetSearch] = useState("");
@@ -20,11 +20,13 @@ const ViewAllMedicines = () => {
         {
             id: "mediciname",
             name: "Medicine Name",
+            id: "mediciname",
+            name: "Medicine Name",
             selector: (row) => row.name,
             sortable: true,
         },
-
         {
+            id: "edit",
             id: "edit",
             name: "Edit",
             cell: (row) =>
@@ -32,8 +34,8 @@ const ViewAllMedicines = () => {
                 <AiFillEdit onClick={() => editMedicine(row.id)}></AiFillEdit>
             ),
         },
-
         {
+            id: "delete",
             id: "delete",
             name: "Delete",
             cell: (row) =>
@@ -43,8 +45,27 @@ const ViewAllMedicines = () => {
         }
     ]
     const deleteMedicine = async (id) => {
-        const data = await fetch(`http://localhost:5000/Medicine/${id}`, { method: 'delete' })
-        const response = await data.json();
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const data =  fetch(`http://localhost:5000/Medicine/${id}`, { method: 'delete' })
+                Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                )
+                window.location.reload(true)
+            }
+        })
+       
+
         fetchMedicineDetails();
     }
 

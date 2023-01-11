@@ -54,7 +54,7 @@ const ViewPatientsDisease = () => {
         {
             id: "diseasename",
             name: "Disease Name",
-            selector: (row) => diseaseView.map((d) => {if(d.id==row.disease_id){ return (d.name)}}),
+            selector: (row) => diseaseView.map((d) => { if (d.id == row.disease_id) { return (d.name) } }),
             sortable: true,
             style: {
                 fontSize: '14px', 
@@ -72,7 +72,7 @@ const ViewPatientsDisease = () => {
         {
             id: "mediciname",
             name: "Medicine Name",
-            selector: (row) => medicineView.map((d) => {if(d.id==row.medicine_id){ return (d.name)}}),
+            selector: (row) => medicineView.map((d) => { if (d.id == row.medicine_id) { return (d.name) } }),
             sortable: true,
             style: {
                 fontSize: '14px', 
@@ -81,25 +81,42 @@ const ViewPatientsDisease = () => {
         {
             id: "doctname",
             name: "Doctor Name",
-            selector: (row) => doctorView.map((d) => {if(d.id==row.doctor_id){ return (d.name)}}),
+            selector: (row) => doctorView.map((d) => { if (d.id == row.doctor_id) { return (d.name) } }),
             sortable: true,
-            style: {
-                fontSize: '14px', 
-            },
+        },
+        {
+            name: "Delete",
+            cell: (row) =>
+            (
+                <AiFillDelete onClick={() => deletePatientDisease(row.id)}></AiFillDelete>
+            ),
         }
     ]
       
     
     useEffect(() => {
-       fetchPatientDiseaseDetails();
-       fetchPatitents();
-       fetchDisease();
-       fetchMedicines();
-       fetchDoctors();
-    }, []
-    );
+        if (search == "") {
+            fetchPatientDiseaseDetails();
+            fetchPatitents();
+            fetchDisease();
+            fetchMedicines();
+            fetchDoctors();
+        }
+        else {
+          
+            let filtered = (doctorView.filter(d => d.name.toLowerCase().includes(search.toLowerCase()) 
+             
+            ))
+         
+        }
 
-    
+    }, [search]
+    );
+    const deletePatientDisease = async (id) => {
+        const data = await fetch(`http://localhost:5000/PatientDisease/${id}`, { method: 'delete' })
+        fetchPatientDiseaseDetails();
+    }
+   
     return (
         <div className="sb-nav-fixed">
             <div className="container " >
