@@ -58,23 +58,40 @@ const DoctorPatientHistory = () => {
             name: "Patient Name",
             selector: (row) => patientView.map((d) => { if (d.id == row.patient_id) { return (d.name) } }),
             sortable: true,
+            style: {
+                fontSize: '15px',
+                background:'#F3F3F3'
+              },
         },
         {
             id: "diseasename",
             name: "Disease",
             selector: (row) => diseaseView.map((d) => { if (d.id == row.disease_id) { return (d.name) } }),
             sortable: true,
+            style: {
+                fontSize: '15px',
+                background:'#F3F3F3'
+              },
         },
         {
+            id: "diseasename",
             name: "Medicine",
             selector: (row) => medicineView.map((d) => { if (d.id == row.medicine_id) { return (d.name) } }),
             sortable: true,
+            style: {
+                fontSize: '15px',
+                background:'#F3F3F3'
+              },
         },
         {
             id: "suffdate",
             name: "Suffering Date",
             selector: (row) => row.suffering_date,
             sortable: true,
+            style: {
+                fontSize: '15px',
+                background:'#F3F3F3'
+              },
         },
         {
             id: "suffdate",
@@ -83,6 +100,9 @@ const DoctorPatientHistory = () => {
             (
                 <Button type="variant">Prescribe Medicine</Button>
             ),
+            style: {
+                background:'#F3F3F3'
+              },
         }
     ]
     

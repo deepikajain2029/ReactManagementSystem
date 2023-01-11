@@ -27,12 +27,20 @@ const ViewAllPatient = () => {
             name: "Patients",
             selector: (row) => row.name,
             sortable: true,
+            style: {
+                fontSize: '15px',
+                background:'#F3F3F3'
+              },
         },
         {
             id: "email",
             name: "Email",
             selector: (row) => row.email,
             sortable: true,
+            style: {
+                fontSize: '15px',
+                background:'#F3F3F3'
+              },
         },
 
         {
@@ -40,34 +48,54 @@ const ViewAllPatient = () => {
             name: "Address 1",
             selector: (row) => row.address1,
             sortable: true,
+            style: {
+                fontSize: '15px',
+                background:'#F3F3F3'
+              },
         },
         {
             id: "address2",
             name: "Address 2",
             selector: (row) => row.address2,
             sortable: true,
+            style: {
+                fontSize: '15px',
+                background:'#F3F3F3'
+              },
         },
         {
             id: "mobile",
             name: "Mobile",
             selector: (row) => row.mobile,
             sortable: true,
+            style: {
+                fontSize: '15px',
+                background:'#F3F3F3'
+              },
         },
         {
             id: "edit",
             name: "Edit",
             cell: (row) =>
             (
-                <AiFillEdit onClick={() => editPatient(row.id)}></AiFillEdit>
+                <AiFillEdit style={{color:"87CEFA"}} onClick={() => editPatient(row.id)}></AiFillEdit>
             ),
+            style: {
+                fontSize: '20px',
+                background:'#F3F3F3',
+              },
         },
         {
             id: "delete",
             name: "Delete",
             cell: (row) =>
             (
-                <AiFillDelete onClick={() => deletePatient(row.id)}></AiFillDelete>
+                <AiFillDelete style={{color:"red"}} onClick={() => deletePatient(row.id)}></AiFillDelete>
             ),
+            style: {
+                background:'#F3F3F3',
+                fontSize: '20px',
+              },
         }
     ]
     const deletePatient = async (id, email) => {
@@ -129,49 +157,27 @@ const ViewAllPatient = () => {
 
     return (
         <div className="sb-nav-fixed">
-
             <div className="container " >
-
                 <div id="layoutSidenav">
-
                     <div id="layoutSidenav_content">
-
                         <div className="row">
-
                             <DataTable title="View All Patients"
-
                                 columns={columns}
-
                                 data={patientView}
-
                                 pagination
-
                                 fixedHeader
-
-                                fixedHeaderScrollHeight='450px'
-
+                                fixedHeaderScrollHeight='350px'
                                 selectableRowsHighlight
-
                                 highlightOnHover
-
                                 subHeader
-
                                 subHeaderComponent={<input type="text" placeholder='search by name'
-
                                     value={search}
-
                                     onChange={(e) => SetSearch(e.target.value)} />}
-
                             />
-
                         </div>
-
                     </div>
-
                 </div>
-
             </div>
-
         </div>
     )
 }

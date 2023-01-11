@@ -10,6 +10,7 @@ const ViewAllDoctors = () => {
     const [doctorView, setdoctorView] = useState([]);
     const [roleView, setRoleView] = useState([]);
     const navigate = useNavigate();
+
     const fetchDoctorDetails = async () => {
         const data = await fetch("http://localhost:5000/doctor")
         const parsedData = await data.json()
@@ -28,12 +29,20 @@ const ViewAllDoctors = () => {
             name: "Doctors",
             selector: (row) => row.name,
             sortable: true,
+            style: {
+                fontSize: '15px',
+                background:'#F3F3F3'
+              },
         },
         {
             id: "sepicalist",
             name: "Sepicalist",
             selector: (row) => row.specialist,
             sortable: true,
+            style: {
+                fontSize: '15px',
+                background:'#F3F3F3'
+              },
         },
 
         {
@@ -41,6 +50,10 @@ const ViewAllDoctors = () => {
             name: "Degree",
             selector: (row) => row.degree,
             sortable: true,
+            style: {
+                fontSize: '15px',
+                background:'#F3F3F3'
+              },
         },
 
         {
@@ -48,6 +61,10 @@ const ViewAllDoctors = () => {
             name: "Mobile",
             selector: (row) => row.mobile,
             sortable: true,
+            style: {
+                fontSize: '15px',
+                background:'#F3F3F3'
+              },
         },
 
         {
@@ -55,24 +72,37 @@ const ViewAllDoctors = () => {
             name: "Email",
             selector: (row) => row.doctoremailaddress,
             sortable: true,
+            style: {
+                fontSize: '15px',
+                background:'#F3F3F3'
+              },
         },
         {
             id: "edit",
             name: "Edit",
             cell: (row) =>
             (
-                <AiFillEdit onClick={() => editDoctor(row.id)}></AiFillEdit>
+                <AiFillEdit style={{color:"87CEFA"}} onClick={() => editDoctor(row.id)}></AiFillEdit>
             ),
+            style: {
+                fontSize: '20px',
+                background:'#F3F3F3',
+              },
         },
         {
             id: "delete",
             name: "Delete",
             cell: (row) =>
             (
-                <AiFillDelete onClick={() => deleteDoctor(row.id)}></AiFillDelete>
+                <AiFillDelete style={{color:"red"}} onClick={() => deleteDoctor(row.id)}></AiFillDelete>
             ),
+            style: {
+                background:'#F3F3F3',
+                fontSize: '20px',
+              },
         }
     ]
+
     const editDoctor = async (id) => {
         const data = await fetch(`http://localhost:5000/doctor/${id}`)
         const response = await data.json();
@@ -133,7 +163,7 @@ const ViewAllDoctors = () => {
                                 data={doctorView}
                                 pagination
                                 fixedHeader
-                                fixedHeaderScrollHeight='450px'
+                                fixedHeaderScrollHeight='350px'
                                 selectableRowsHighlight
                                 highlightOnHover
                                 subHeader

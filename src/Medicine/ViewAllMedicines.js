@@ -18,30 +18,41 @@ const ViewAllMedicines = () => {
 
     const columns = [
         {
-            id: "mediciname",
-            name: "Medicine Name",
+            
             id: "mediciname",
             name: "Medicine Name",
             selector: (row) => row.name,
             sortable: true,
+            style: {
+                fontSize: '15px',
+                background:'#F3F3F3'
+              },
         },
         {
-            id: "edit",
+          
             id: "edit",
             name: "Edit",
             cell: (row) =>
             (
-                <AiFillEdit onClick={() => editMedicine(row.id)}></AiFillEdit>
+                <AiFillEdit style={{color:"87CEFA"}} onClick={() => editMedicine(row.id)}></AiFillEdit>
             ),
+            style: {
+                fontSize: '20px',
+                background:'#F3F3F3',
+              },
         },
         {
-            id: "delete",
+          
             id: "delete",
             name: "Delete",
             cell: (row) =>
             (
-                <AiFillDelete onClick={() => deleteMedicine(row.id)}></AiFillDelete>
+                <AiFillDelete style={{color:"red"}} onClick={() => deleteMedicine(row.id)}></AiFillDelete>
             ),
+            style: {
+                background:'#F3F3F3',
+                fontSize: '20px',
+              },
         }
     ]
     const deleteMedicine = async (id) => {
@@ -96,7 +107,7 @@ const ViewAllMedicines = () => {
                             data={medicineView}
                             pagination
                             fixedHeader
-                            fixedHeaderScrollHeight='450px'
+                            fixedHeaderScrollHeight='350px'
                             selectableRowsHighlight
                             highlightOnHover
                             subHeader

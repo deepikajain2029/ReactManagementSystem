@@ -43,53 +43,65 @@ const ViewPatientsDisease = () => {
 
         {
             id: "patientname",
-            name:"Patient Name",
+            name:"Patients",
             selector: (row) => patientView.map((d) => {if(d.id==row.patient_id){ return (d.name)}}),
             sortable: true,
             style: {
-                fontSize: '14px'
-               
-            },
+                fontSize: '15px',
+                background:'#F3F3F3'
+              },
         },
         {
             id: "diseasename",
-            name: "Disease Name",
+            name: "Diseases",
             selector: (row) => diseaseView.map((d) => { if (d.id == row.disease_id) { return (d.name) } }),
             sortable: true,
             style: {
-                fontSize: '14px', 
-            },
+                fontSize: '15px',
+                background:'#F3F3F3'
+              },
         },
         {
             id: "suffdate",
-            name: "Suffering Date",
+            name: "Suff-Date",
             selector: (row) => row.suffering_date,
             sortable: true,
             style: {
-                fontSize: '14px', 
-            },
+                fontSize: '15px',
+                background:'#F3F3F3'
+              },
         },
         {
             id: "mediciname",
-            name: "Medicine Name",
+            name: "Medicines",
             selector: (row) => medicineView.map((d) => { if (d.id == row.medicine_id) { return (d.name) } }),
             sortable: true,
             style: {
-                fontSize: '14px', 
-            },
+                fontSize: '15px',
+                background:'#F3F3F3'
+              },
         },
         {
             id: "doctname",
-            name: "Doctor Name",
+            name: "Doctors",
             selector: (row) => doctorView.map((d) => { if (d.id == row.doctor_id) { return (d.name) } }),
             sortable: true,
+            style: {
+                fontSize: '15px',
+                background:'#F3F3F3'
+              },
         },
         {
+            id:"delete",
             name: "Delete",
             cell: (row) =>
             (
-                <AiFillDelete onClick={() => deletePatientDisease(row.id)}></AiFillDelete>
+                <AiFillDelete style={{color:"red"}}  onClick={() => deletePatientDisease(row.id)}></AiFillDelete>
             ),
+            style: {
+                background:'#F3F3F3',
+                fontSize: '20px',
+              },
         }
     ]
       
@@ -128,7 +140,7 @@ const ViewPatientsDisease = () => {
                                 data={patientDiseaseView}
                                 pagination
                                 fixedHeader
-                                fixedHeaderScrollHeight='450px'
+                                fixedHeaderScrollHeight='350px'
                                 selectableRowsHighlight
                                 highlightOnHover
                                 subHeader
