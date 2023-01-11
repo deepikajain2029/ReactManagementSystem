@@ -3,7 +3,9 @@ import DataTable from 'react-data-table-component'
 import { AiFillDelete, AiFillEdit } from 'react-icons/ai';
 import { useNavigate, useLocation } from 'react-router-dom';
 import "../styles.css";
+
 const ViewPatientsDisease = () => {
+
     const [search, SetSearch] = useState("");
     const [patientDiseaseView, setpatientDiseaseView] = useState([]);
     const [diseaseView, setdiseaseView] = useState([]);
@@ -40,26 +42,44 @@ const ViewPatientsDisease = () => {
     const columns = [
 
         {
-            name: "Patient Name",
-            selector: (row) => patientView.map((d) => { if (d.id == row.patient_id) { return (d.name) } }),
+            id: "patientname",
+            name:"Patient Name",
+            selector: (row) => patientView.map((d) => {if(d.id==row.patient_id){ return (d.name)}}),
             sortable: true,
+            style: {
+                fontSize: '14px'
+               
+            },
         },
         {
+            id: "diseasename",
             name: "Disease Name",
             selector: (row) => diseaseView.map((d) => { if (d.id == row.disease_id) { return (d.name) } }),
             sortable: true,
+            style: {
+                fontSize: '14px', 
+            },
         },
         {
+            id: "suffdate",
             name: "Suffering Date",
             selector: (row) => row.suffering_date,
             sortable: true,
+            style: {
+                fontSize: '14px', 
+            },
         },
         {
+            id: "mediciname",
             name: "Medicine Name",
             selector: (row) => medicineView.map((d) => { if (d.id == row.medicine_id) { return (d.name) } }),
             sortable: true,
+            style: {
+                fontSize: '14px', 
+            },
         },
         {
+            id: "doctname",
             name: "Doctor Name",
             selector: (row) => doctorView.map((d) => { if (d.id == row.doctor_id) { return (d.name) } }),
             sortable: true,
@@ -72,6 +92,8 @@ const ViewPatientsDisease = () => {
             ),
         }
     ]
+      
+    
     useEffect(() => {
         if (search == "") {
             fetchPatientDiseaseDetails();
@@ -101,7 +123,7 @@ const ViewPatientsDisease = () => {
                 <div id="layoutSidenav">
                     <div id="layoutSidenav_content">
                         <div className="row">
-                            <DataTable title="View All Patient Disease"
+                            <DataTable title="View All Patient Disease" 
                                 columns={columns}
                                 data={patientDiseaseView}
                                 pagination

@@ -3,16 +3,12 @@
     font-size: 17px;
     color: white;
   }
-
- 
-
+  
   [data-column-id="diseasename"].rdt_TableCol {
     background-color: #0D6EFD;
     font-size: 17px;
     color: white;
   }
-
-
 
   [data-column-id="suffdate"].rdt_TableCol {
     background-color: #0D6EFD;
@@ -20,76 +16,52 @@
     color: white;
   }
 
-
-
   [data-column-id="mediciname"].rdt_TableCol {
     background-color: #0D6EFD;
     font-size: 17px;
     color: white;
   }
 
-
-
   [data-column-id="doctname"].rdt_TableCol {
     background-color: #0D6EFD;
     font-size: 17px;
     color: white;
   }
-
   [data-column-id="edit"].rdt_TableCol {
     background-color: #0D6EFD;
     font-size: 17px;
     color: white;
   }
-
   [data-column-id="delete"].rdt_TableCol {
     background-color: #0D6EFD;
     font-size: 17px;
     color: white;
   }
-
   [data-column-id="sepicalist"].rdt_TableCol {
     background-color: #0D6EFD;
     font-size: 17px;
     color: white;
   }
-
   [data-column-id="degree"].rdt_TableCol {
-
     background-color: #0D6EFD;
-
     font-size: 17px;
-
     color: white;
-
   }
-
   [data-column-id="mobile"].rdt_TableCol {
-
     background-color: #0D6EFD;
-
     font-size: 17px;
-
     color: white;
-
   }
-
   [data-column-id="email"].rdt_TableCol {
-
     background-color: #0D6EFD;
-
     font-size: 17px;
-
     color: white;
-
   }
-
   [data-column-id="address1"].rdt_TableCol {
     background-color: #0D6EFD;
     font-size: 17px;
     color: white;
   }
-
   [data-column-id="address2"].rdt_TableCol {
     background-color: #0D6EFD;
     font-size: 17px;

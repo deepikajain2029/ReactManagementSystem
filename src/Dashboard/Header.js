@@ -4,6 +4,7 @@ import {Link,useNavigate  } from 'react-router-dom';
 import {useAuthState} from 'react-firebase-hooks/auth'
 import { auth } from "../firbase";
 import {signOut ,sendPasswordResetEmail} from "firebase/auth"; 
+import { FaHospitalSymbol,FaHospitalUser,FaDisease,FaWatchmanMonitoring ,FaFileMedical} from 'react-icons/fa';
 
 const Header = () => {
     const openNav = () => {
@@ -56,7 +57,7 @@ const Header = () => {
         </nav>
         <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
-                <nav className="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <nav className="sb-sidenav accordion sb-sidenav-dark bg-dark" id="sidenavAccordion">
                     <div className="sb-sidenav-menu">
                         <div className="nav">
                             <a className="nav-link" href="/dashboard">
@@ -66,8 +67,8 @@ const Header = () => {
                             {/* Doctor Area */}
                         
                             <a className="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                                <div className="sb-nav-link-icon"><i className="fas fa-columns"></i></div>
-                                Doctor
+                                <div className="sb-nav-link-icon"><FaHospitalSymbol /></div>
+                                Doctor  
                                 <div className="sb-sidenav-collapse-arrow"><i className="fas fa-angle-down"></i></div>
                             </a>
                             <div className="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
@@ -78,7 +79,7 @@ const Header = () => {
                             </div>
                             {/* Patient Area */}
                             <a className="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
-                                <div className="sb-nav-link-icon"><i className="fas fa-book-open"></i></div>
+                                <div className="sb-nav-link-icon"><FaHospitalUser/></div>
                                 Patient
                                 <div className="sb-sidenav-collapse-arrow"><i className="fas fa-angle-down"></i></div>
                             </a>
@@ -90,7 +91,7 @@ const Header = () => {
                             </div>
                              {/* Patient Disease Area */}
                              <a className="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePatientPages" aria-expanded="false" aria-controls="collapsePages">
-                                <div className="sb-nav-link-icon"><i className="fas fa-book-open"></i></div>
+                                <div className="sb-nav-link-icon"><FaWatchmanMonitoring/></div>
                                 Patient Disease
                                 <div className="sb-sidenav-collapse-arrow"><i className="fas fa-angle-down"></i></div>
                             </a>
@@ -103,7 +104,7 @@ const Header = () => {
                             </div>
                             {/* Disease Area */}
                             <a className="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseDisease" aria-expanded="false" aria-controls="collapsePages">
-                                <div className="sb-nav-link-icon"><i className="fas fa-book-open"></i></div>
+                                <div className="sb-nav-link-icon"><FaDisease/></div>
                                 Disease
                                 <div className="sb-sidenav-collapse-arrow"><i className="fas fa-angle-down"></i></div>
                             </a>
@@ -116,7 +117,7 @@ const Header = () => {
                             </div>
                              {/* Medicine Area */}
                              <a className="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseMedicine" aria-expanded="false" aria-controls="collapsePages">
-                                <div className="sb-nav-link-icon"><i className="fas fa-book-open"></i></div>
+                                <div className="sb-nav-link-icon"><FaFileMedical/></div>
                                 Medicine
                                 <div className="sb-sidenav-collapse-arrow"><i className="fas fa-angle-down"></i></div>
                             </a>

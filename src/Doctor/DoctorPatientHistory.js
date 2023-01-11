@@ -54,11 +54,13 @@ const DoctorPatientHistory = () => {
     const columns = [
 
         {
+            id: "patientname",
             name: "Patient Name",
             selector: (row) => patientView.map((d) => { if (d.id == row.patient_id) { return (d.name) } }),
             sortable: true,
         },
         {
+            id: "diseasename",
             name: "Disease",
             selector: (row) => diseaseView.map((d) => { if (d.id == row.disease_id) { return (d.name) } }),
             sortable: true,
@@ -69,9 +71,18 @@ const DoctorPatientHistory = () => {
             sortable: true,
         },
         {
+            id: "suffdate",
             name: "Suffering Date",
             selector: (row) => row.suffering_date,
             sortable: true,
+        },
+        {
+            id: "suffdate",
+            name: "Action",
+            cell:(row)=>
+            (
+                <Button type="variant">Prescribe Medicine</Button>
+            ),
         }
     ]
     
