@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import DataTable from 'react-data-table-component'
 import { AiFillDelete, AiFillEdit } from 'react-icons/ai';
 import { useNavigate, useLocation } from 'react-router-dom';
+import "../styles.css";
 
 const ViewAllDoctors = () => {
   const [search, SetSearch] = useState("");
@@ -15,32 +16,37 @@ const ViewAllDoctors = () => {
   const columns = [
      
       {
-          name: "Name",
+          id: "doctname",
+          name: "Doctors",
           selector: (row) => row.name,
           sortable: true,
       },
       {
+          id: "sepicalist",
           name: "Sepicalist",
           selector: (row) => row.specialist,
           sortable: true,
       },
-      {
+      {   id: "degree",
           name: "Degree",
           selector: (row) => row.degree,
           sortable: true,
       },
       {
+          id: "mobile",
           name: "Mobile",
           selector: (row) => row.mobile,
           sortable: true,
       },
       {
+          id: "email",
           name: "Email",
           selector: (row) => row.doctoremailaddress,
           sortable: true,
       },
      
       {
+          id: "edit",
           name:"Edit",
           cell:(row)=>
           (
@@ -48,6 +54,7 @@ const ViewAllDoctors = () => {
           ),
       },
       {
+          id: "delete",
           name:"Delete",
           cell:(row)=>
           (

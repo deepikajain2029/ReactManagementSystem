@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import DataTable from 'react-data-table-component'
 import Button from 'react-bootstrap/Button';
 import { useNavigate, useLocation } from 'react-router-dom';
+import "../styles.css";
 
 const DoctorPatientHistory = () => {
     const [search, SetSearch] = useState("");
@@ -40,21 +41,25 @@ const DoctorPatientHistory = () => {
     const columns = [
 
         {
+            id: "patientname",
             name: "Patient Name",
             selector: (row) => patientView.map((d) => {if(d.id==row.patient_id){ return (d.name)}}),
             sortable: true,
         },
         {
+            id: "diseasename",
             name: "Disease",
             selector: (row) => diseaseView.map((d) => {if(d.id==row.disease_id){ return (d.name)}}),
             sortable: true,
         },
         {
+            id: "suffdate",
             name: "Suffering Date",
             selector: (row) => row.suffering_date,
             sortable: true,
         },
         {
+            id: "suffdate",
             name: "Action",
             cell:(row)=>
             (
