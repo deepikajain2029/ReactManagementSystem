@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import {  useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firbase";
 
@@ -7,25 +7,54 @@ import { auth } from "../firbase";
 
 const Login = () => {
     const navigate = useNavigate();
-    const[email, setEmail]=useState("");
-    const[password, setPassword]=useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
     const [errorMsg, setErrorMsg] = useState("");
     const today = new Date();
-    const Signin=()=>{
+    const [roles, setRoles] = useState([]);
+
+    const getRoles = async () => {
+        const data = await fetch("http://localhost:5000/Roles")
+        const response = await data.json();
+        setRoles(response)
+
+    }
+    const items = roles.filter(item => item.email_address == email);
+    const Signin = () => {
         if (!email || !password) {
             setErrorMsg("Fill all fields");
             return;
         }
         setErrorMsg("");
-
         signInWithEmailAndPassword(auth, email, password)
             .then(async (res) => {
+               getRoles();
+                window.$role = items[0].role;
+    
+                if (window.$role === 'admin') {
                 navigate("/dashboard");
+                }
+                else if(window.$role === 'doctor')
+                {
+                    navigate("/viewdoctorpatienthistory");
+                }
+                else if(window.$role === 'patient')
+                {
+                    navigate("/patientdiseasehistory");
+                }
             })
             .catch((err) => {
                 setErrorMsg("You have entered wrong credential");
             });
+
     };
+    useEffect(() => {
+
+        getRoles();
+
+    }, []
+
+    );
     return (
         <div className="background-image" style={{ backgroundImage: "URL(/static/media/backgroundImg.739dd2074172ecf35920.png)" }}>
             <div id="layoutAuthentication">
@@ -39,15 +68,15 @@ const Login = () => {
                                         <div className="card-body">
                                             <form>
                                                 <div className="form-floating mb-3">
-                                                    <input className="form-control" onChange={(event)=>setEmail(event.target.value)} id="inputEmail" type="email" placeholder="name@example.com" />
+                                                    <input className="form-control" onChange={(event) => setEmail(event.target.value)} id="inputEmail" type="email" placeholder="name@example.com" />
                                                     <label for="inputEmail">Email address</label>
                                                 </div>
                                                 <div className="form-floating mb-3">
-                                                    <input className="form-control" onChange={(event)=>setPassword(event.target.value)} id="inputPassword" type="password" placeholder="Password" />
+                                                    <input className="form-control" onChange={(event) => setPassword(event.target.value)} id="inputPassword" type="password" placeholder="Password" />
                                                     <label for="inputPassword">Password</label>
                                                 </div>
                                                 <div className="text-center">
-                                                <b className="error">{errorMsg}</b><br/>
+                                                    <b className="error">{errorMsg}</b><br />
                                                     <button type="button" onClick={Signin} className="btn btn-primary">Login</button>
                                                 </div>
                                             </form>
