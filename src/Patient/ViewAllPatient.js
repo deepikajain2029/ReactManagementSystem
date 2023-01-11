@@ -2,11 +2,10 @@ import React, { useState, useEffect } from 'react'
 import DataTable from 'react-data-table-component'
 import { AiFillDelete, AiFillEdit } from 'react-icons/ai';
 import { useNavigate, useLocation } from 'react-router-dom';
-import "../styles.css";
 import Swal from 'sweetalert2'
+import "../styles.css";
 
 const ViewAllPatient = () => {
-
     const [search, SetSearch] = useState("");
     const [roleView, setRoleView] = useState([]);
     const [patientView, setpatientView] = useState([]);
@@ -23,7 +22,6 @@ const ViewAllPatient = () => {
         setRoleView(parsedData1)
     }
     const columns = [
-
         {
             id: "patientname",
             name: "Patients",
@@ -36,20 +34,19 @@ const ViewAllPatient = () => {
             selector: (row) => row.email,
             sortable: true,
         },
+
         {
             id: "address1",
             name: "Address 1",
             selector: (row) => row.address1,
             sortable: true,
         },
-
         {
             id: "address2",
             name: "Address 2",
             selector: (row) => row.address2,
             sortable: true,
         },
-
         {
             id: "mobile",
             name: "Mobile",
@@ -64,13 +61,12 @@ const ViewAllPatient = () => {
                 <AiFillEdit onClick={() => editPatient(row.id)}></AiFillEdit>
             ),
         },
-
         {
             id: "delete",
             name: "Delete",
             cell: (row) =>
             (
-                <AiFillDelete onClick={() => deletePatient(row.id, row.email)}></AiFillDelete>
+                <AiFillDelete onClick={() => deletePatient(row.id)}></AiFillDelete>
             ),
         }
     ]
@@ -102,13 +98,17 @@ const ViewAllPatient = () => {
     }
 
     const editPatient = async (id) => {
+
         const data = await fetch(`http://localhost:5000/Patient/${id}`)
+
         const response = await data.json();
+
         console.log(response)
 
         navigate("/addpatient", { state: { addPatient: response } })
 
         // navigate("/addpatient", { state: { addpatient: response } })
+
     }
 
     useEffect(() => {
@@ -129,27 +129,49 @@ const ViewAllPatient = () => {
 
     return (
         <div className="sb-nav-fixed">
+
             <div className="container " >
+
                 <div id="layoutSidenav">
+
                     <div id="layoutSidenav_content">
+
                         <div className="row">
+
                             <DataTable title="View All Patients"
+
                                 columns={columns}
+
                                 data={patientView}
+
                                 pagination
+
                                 fixedHeader
+
                                 fixedHeaderScrollHeight='450px'
+
                                 selectableRowsHighlight
+
                                 highlightOnHover
+
                                 subHeader
+
                                 subHeaderComponent={<input type="text" placeholder='search by name'
+
                                     value={search}
+
                                     onChange={(e) => SetSearch(e.target.value)} />}
+
                             />
+
                         </div>
+
                     </div>
+
                 </div>
+
             </div>
+
         </div>
     )
 }
