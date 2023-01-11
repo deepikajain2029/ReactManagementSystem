@@ -8,7 +8,7 @@ import { AiFillDelete, AiFillEdit } from 'react-icons/ai';
 const Dashboard = () => {
     const [showDoctor,setshowDoctor]=useState(false)
     const [showMedicine,setshowMedicine]=useState(false)
-    const [showPatient,setshowPatient]=useState(false)
+    const [showPatient,setshowPatient]=useState(true)
     const [showDisease,setshowDisease]=useState(false)
 
     const [doctorView, setdoctorView] = useState([]);
@@ -141,17 +141,43 @@ const Dashboard = () => {
                                 </div>
 
                                 <div className="card mb-4">
-                                    <div className="card-header">
+                                {showPatient && <div className="card-header">
                                         <i className="fas fa-table me-1"></i>
-                                        Patients Details {' '}
+                                         Patient Details {' '}
                                         <form className="d-none d-md-inline-block" >
                                             <div className="input-group" >
                                             </div>
                                         </form>
-                                    </div>
+                                    </div>}
+                                    {showDoctor && <div className="card-header">
+                                        <i className="fas fa-table me-1"></i>
+                                         Doctor Details {' '}
+                                        <form className="d-none d-md-inline-block" >
+                                            <div className="input-group" >
+                                            </div>
+                                        </form>
+                                    </div>}
+                                    {showMedicine && <div className="card-header">
+                                        <i className="fas fa-table me-1"></i>
+                                         Medicine Details {' '}
+                                        <form className="d-none d-md-inline-block" >
+                                            <div className="input-group" >
+                                            </div>
+                                        </form>
+                                    </div>}
+                                    {showDisease && <div className="card-header">
+                                        <i className="fas fa-table me-1"></i>
+                                         Disease Details {' '}
+                                        <form className="d-none d-md-inline-block" >
+                                            <div className="input-group" >
+                                            </div>
+                                        </form>
+                                    </div>}
+                                    
+                                   
 
                                     <div className="card-body">
-                                    {showPatient &&  <Table striped bordered hover >
+                                    {showPatient && <Table striped bordered hover >
                                             <thead>
                                                 <tr>
                                                     <th>Patient Name</th>
@@ -190,7 +216,7 @@ const Dashboard = () => {
 
                                         </Table>}
 
-                                      {showMedicine &&    <Table striped bordered hover>
+                                      {showMedicine && <Table striped bordered hover>
                                             <thead>
                                                 <tr>
                                                     <th>Medicine Name</th>
@@ -208,7 +234,7 @@ const Dashboard = () => {
 
 
                                         </Table>}
-                                        {showDisease &&    <Table striped bordered hover>
+                                        {showDisease &&  <Table striped bordered hover>
                                             <thead>
                                                 <tr>
                                                     <th>Disease Name</th>
