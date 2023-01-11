@@ -430,11 +430,11 @@
   "Roles": [
     {
       "id": 1,
-      "email_address": "deepika.jain@yash.com",
+      "email_address": "nikhilkatiyar5@gmail.com",
       "role": "admin"
     },
     {
-      "email_address": "yamini@gamil.com",
+      "email_address": "nikhil.kumar@yash.com",
       "role": "doctor",
       "id": 2
     },
