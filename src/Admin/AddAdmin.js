@@ -131,9 +131,9 @@ const AddAdmin = () => {
                                     className="outline-primary" />
                             </Form.Group>
 
-                            <div style={{ "textAlign": "right" }}>
-                                <Button variant="success" type="submit" >{location.state != null ? 'Update' : 'Save'}</Button>{' '}{' '}
-                                <Button variant="secondary" href='/dashboard' type="cancel">Cancel</Button>
+                            <div style={{ "textAlign": "left" }}>
+                                <Button variant="primary" type="submit" >{location.state != null ? 'Update' : 'Save'}</Button>{' '}{' '}
+                                <Button variant="secondary" onClick={() => navigate('/dashboard')} type="cancel">Cancel</Button>
 
                             </div>
                         </Form>
