@@ -39,7 +39,8 @@ const ViewAllPatient = () => {
             sortable: true,
             style: {
                 fontSize: '15px',
-                background:'#F3F3F3'
+                background:'#F3F3F3',
+                width:'1100px'
               },
         },
 
