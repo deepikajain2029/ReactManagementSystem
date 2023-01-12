@@ -96,8 +96,8 @@ const Dashboard = () => {
                 <div id="layoutSidenav">
                     <div id="layoutSidenav_content">
                         <main>
-                            <div className="container-fluid px-4">
-                                <h1 className="mt-4">Dashboard</h1>
+                            <div className="container-fluid px-4 ">
+                                <h1 className="mt-4" style={{color: 'dark'}}>Dashboard</h1>
                                 {/* <ol className="breadcrumb mb-4">
                                     <li className="breadcrumb-item active">Dashboard</li>
                                 </ol> */}
@@ -141,8 +141,8 @@ const Dashboard = () => {
                                 </div>
 
                                 <div className="card mb-4">
-                                {showPatient && <div className="card-header">
-                                        <i className="fas fa-table me-1"></i>
+                                {showPatient && <div className="card-header bg-primary">
+                                        <i className="fas fa-table me-1 "></i>
                                          Patient Details {' '}
                                         <form className="d-none d-md-inline-block" >
                                             <div className="input-group">
@@ -150,7 +150,7 @@ const Dashboard = () => {
                                             </div>
                                         </form>
                                     </div>}
-                                    {showDoctor && <div className="card-header">
+                                    {showDoctor && <div className="card-header bg-warning">
                                         <i className="fas fa-table me-1"></i>
                                          Doctor Details {' '}
                                         <form className="d-none d-md-inline-block" >
@@ -159,7 +159,7 @@ const Dashboard = () => {
                                             </div>
                                         </form>
                                     </div>}
-                                    {showMedicine && <div className="card-header">
+                                    {showMedicine && <div className="card-header bg-success">
                                         <i className="fas fa-table me-1"></i>
                                          Medicine Details {' '}
                                         <form className="d-none d-md-inline-block" >
@@ -168,7 +168,7 @@ const Dashboard = () => {
                                             </div>
                                         </form>
                                     </div>}
-                                    {showDisease && <div className="card-header">
+                                    {showDisease && <div className="card-header bg-danger">
                                         <i className="fas fa-table me-1"></i>
                                          Disease Details {' '}
                                         <form className="d-none d-md-inline-block" >
@@ -181,7 +181,7 @@ const Dashboard = () => {
                                    
 
                                     <div className="card-body">
-                                    {showPatient && <Table striped bordered hover >
+                                    {showPatient && <Table striped bordered hover variant="primary">
                                             <thead>
                                                 <tr>
                                                     <th>Patient Name</th>
@@ -200,8 +200,7 @@ const Dashboard = () => {
                                             </tbody>
 
                                         </Table>}   
-                                       {showDoctor && <Table striped bordered hover >
-                                      
+                                       {showDoctor &&  <Table striped bordered hover variant="warning">
                                             <thead>
                                                 <tr>
                                                     <th>Doctor Name</th>
@@ -222,7 +221,7 @@ const Dashboard = () => {
                                         </Table>
                                         }
 
-                                      {showMedicine && <Table striped bordered hover>
+                                      {showMedicine && <Table striped bordered hover variant="success">
                                             <thead>
                                                 <tr>
                                                     <th>Medicine Name</th>
@@ -240,7 +239,7 @@ const Dashboard = () => {
 
 
                                         </Table>}
-                                        {showDisease &&  <Table striped bordered hover>
+                                        {showDisease &&  <Table striped bordered hover variant="danger">
                                             <thead>
                                                 <tr>
                                                     <th>Disease Name</th>

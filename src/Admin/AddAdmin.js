@@ -4,9 +4,10 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import { Input } from 'reactstrap'
 import { auth } from "../firbase";
-import {createUserWithEmailAndPassword} from "firebase/auth"; 
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
 const AddAdmin = () => {
+   
     const location = useLocation()
 
     const [addAdmin, setaddAdmin] = useState({})
@@ -48,29 +49,43 @@ const AddAdmin = () => {
             }
             else {
 
-                    const requestOptions = {
-                        'method': 'POST',
-                        'headers': { "content-type": "application/json" },
-                        'body': JSON.stringify({
-                            adminname: addAdmin.adminname,
-                            password: addAdmin.admin_password,
-                            email: addAdmin.email_address,
-                            address1: addAdmin.address1,
-                            address2: addAdmin.address2,
-                            phone: addAdmin.phone
-                        })
-                    }
-                    
-                    const data = fetch(`http://localhost:5000/Admin`, requestOptions)
-                    try {
-                        createUserWithEmailAndPassword(auth,addAdmin.email_address,addAdmin.admin_password);  
-                        alert('Admin created successfully...')    
-                      } catch (error) {
-                        alert(error);
-                      }
-                    
-                    navigate('/dashboard');
-                
+                const requestOptions = {
+                    'method': 'POST',
+                    'headers': { "content-type": "application/json" },
+                    'body': JSON.stringify({
+                        adminname: addAdmin.adminname,
+                        password: addAdmin.admin_password,
+                        email: addAdmin.email_address,
+                        address1: addAdmin.address1,
+                        address2: addAdmin.address2,
+                        phone: addAdmin.phone
+                    })
+                }
+
+                const data = fetch(`http://localhost:5000/Admin`, requestOptions)
+                try {
+                    createUserWithEmailAndPassword(auth, addAdmin.email_address, addAdmin.admin_password);
+                    alert('Admin created successfully...')
+                } catch (error) {
+                    alert(error);
+                }
+                const adminData = fetch(`http://localhost:5000/Admin`, requestOptions).then(adminData => adminData.json())
+                    .then(adminData => {
+                        if (adminData.id > 0) {
+                            const roleOptions = {
+                                'method': 'POST',
+                                'headers': { "content-type": "application/json" },
+                                'body': JSON.stringify({
+                                    email_address: adminData.email,
+                                    role: "admin",
+                                })
+                            }
+                            const data = fetch(`http://localhost:5000/Roles`, roleOptions)
+                        }
+                    })
+
+                navigate('/dashboard');
+
             }
         }
     };
@@ -121,8 +136,8 @@ const AddAdmin = () => {
                             </Form.Group>
 
                             <div style={{ "textAlign": "right" }}>
-                                <Button variant="success" type="submit" >{location.state != null ? 'Update' : 'Save'}</Button>{' '}{' '}      
-                                <Button variant="secondary"href='/dashboard' type="cancel">Cancel</Button>
+                                <Button variant="success" type="submit" >{location.state != null ? 'Update' : 'Save'}</Button>{' '}{' '}
+                                <Button variant="secondary" href='/dashboard' type="cancel">Cancel</Button>
 
                             </div>
                         </Form>

@@ -10,6 +10,7 @@ const ViewAllDoctors = () => {
     const [doctorView, setdoctorView] = useState([]);
     const [roleView, setRoleView] = useState([]);
     const navigate = useNavigate();
+
     const fetchDoctorDetails = async () => {
         const data = await fetch("http://localhost:5000/doctor")
         const parsedData = await data.json()
@@ -55,6 +56,10 @@ const ViewAllDoctors = () => {
                 fontSize: '15px',
                 background:'#F3F3F3'
               },
+            style: {
+                fontSize: '15px',
+                background:'#F3F3F3'
+              },
         },
 
         {
@@ -86,7 +91,7 @@ const ViewAllDoctors = () => {
             width:'80px',
             cell: (row) =>
             (
-                <AiFillEdit onClick={() => editDoctor(row.id)}></AiFillEdit>
+                <AiFillEdit style={{color:"87CEFA"}} onClick={() => editDoctor(row.id)}></AiFillEdit>
             ),
             style: {
                 fontSize: '15px',
@@ -99,7 +104,7 @@ const ViewAllDoctors = () => {
             width:'100px',
             cell: (row) =>
             (
-                <AiFillDelete onClick={() => deleteDoctor(row.id)}></AiFillDelete>
+                <AiFillDelete style={{color:"red"}} onClick={() => deleteDoctor(row.id)}></AiFillDelete>
             ),
             style: {
                 background:'#F3F3F3',
@@ -107,6 +112,7 @@ const ViewAllDoctors = () => {
               },
         }
     ]
+
     const editDoctor = async (id) => {
         const data = await fetch(`http://localhost:5000/doctor/${id}`)
         const response = await data.json();
@@ -167,7 +173,7 @@ const ViewAllDoctors = () => {
                                 data={doctorView}
                                 pagination
                                 fixedHeader
-                                fixedHeaderScrollHeight='450px'
+                                fixedHeaderScrollHeight='350px'
                                 selectableRowsHighlight
                                 highlightOnHover
                                 subHeader

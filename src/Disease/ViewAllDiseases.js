@@ -8,9 +8,7 @@ const ViewAllDiseases = () => {
 
 
     const [search, SetSearch] = useState("");
-
     const [diseaseView, setdiseaseView] = useState([]);
-
     const navigate = useNavigate();
 
     const fetchDiseaseDetails = async () => {
@@ -23,9 +21,7 @@ const ViewAllDiseases = () => {
         {
 
             id: "diseasename",
-
             name: "Disease Name",
-
             selector: (row) => row.name,
             sortable: true,
             wrap: true,
@@ -35,14 +31,16 @@ const ViewAllDiseases = () => {
               },
         },
         {
-
             id: "edit",
-
             name: "Edit",
             cell: (row) =>
             (
-                <AiFillEdit onClick={() => editDisease(row.id)}></AiFillEdit>
+                <AiFillEdit style={{color:"87CEFA"}} onClick={() => editDisease(row.id)}></AiFillEdit>
             ),
+            style: {
+                fontSize: '20px',
+                background:'#F3F3F3',
+              },
         },
 
 
@@ -50,12 +48,15 @@ const ViewAllDiseases = () => {
         {
 
             id: "delete",
-
             name: "Delete",
             cell: (row) =>
             (
-                <AiFillDelete onClick={() => deleteDisease(row.id)}></AiFillDelete>
+                <AiFillDelete style={{color:"red"}} onClick={() => deleteDisease(row.id)}></AiFillDelete>
             ),
+            style: {
+                background:'#F3F3F3',
+                fontSize: '20px',
+              },
         }
     ]
     const deleteDisease = async (id) => {
@@ -84,12 +85,9 @@ const ViewAllDiseases = () => {
     }
 
     const editDisease = async (id) => {
-
         const data = await fetch(`http://localhost:5000/Disease/${id}`)
-
         const response = await data.json();
         navigate("/adddisease", { state: { adddisease: response } })
-
     }
     useEffect(() => {
         if (search == "") {
@@ -113,7 +111,7 @@ const ViewAllDiseases = () => {
                                 data={diseaseView}
                                 pagination
                                 fixedHeader
-                                fixedHeaderScrollHeight='450px'
+                                fixedHeaderScrollHeight='350px'
                                 selectableRowsHighlight
                                 highlightOnHover
                                 subHeader

@@ -85,8 +85,12 @@ const ViewAllPatient = () => {
             width:'80px',
             cell: (row) =>
             (
-                <AiFillEdit onClick={() => editPatient(row.id)}></AiFillEdit>
+                <AiFillEdit style={{color:"87CEFA"}} onClick={() => editPatient(row.id)}></AiFillEdit>
             ),
+            style: {
+                fontSize: '20px',
+                background:'#F3F3F3',
+              },
         },
         {
             id: "delete",
@@ -95,8 +99,12 @@ const ViewAllPatient = () => {
             width:'100px',
             cell: (row) =>
             (
-                <AiFillDelete onClick={() => deletePatient(row.id)}></AiFillDelete>
+                <AiFillDelete style={{color:"red"}} onClick={() => deletePatient(row.id)}></AiFillDelete>
             ),
+            style: {
+                background:'#F3F3F3',
+                fontSize: '20px',
+              },
         }
     ]
     const deletePatient = async (id, email) => {
@@ -156,49 +164,27 @@ const ViewAllPatient = () => {
 
     return (
         <div className="sb-nav-fixed">
-
             <div className="container " >
-
                 <div id="layoutSidenav">
-
                     <div id="layoutSidenav_content">
-
                         <div className="row">
-
                             <DataTable title="View All Patients"
-
                                 columns={columns}
-
                                 data={patientView}
-
                                 pagination
-
                                 fixedHeader
-
-                                fixedHeaderScrollHeight='450px'
-
+                                fixedHeaderScrollHeight='350px'
                                 selectableRowsHighlight
-
                                 highlightOnHover
-
                                 subHeader
-
                                 subHeaderComponent={<input type="text" placeholder='search by name'
-
                                     value={search}
-
                                     onChange={(e) => SetSearch(e.target.value)} />}
-
                             />
-
                         </div>
-
                     </div>
-
                 </div>
-
             </div>
-
         </div>
     )
 }
