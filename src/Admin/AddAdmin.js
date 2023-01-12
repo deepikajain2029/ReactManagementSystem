@@ -7,20 +7,26 @@ import { auth } from "../firbase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 
 const AddAdmin = () => {
-   
+
     const location = useLocation()
 
     const [addAdmin, setaddAdmin] = useState({})
     const [adminView, setAdminView] = useState([]);
-
+    const [roleView, setRoleView] = useState([]);
     const [validated, setValidated] = useState(false);
     const navigate = useNavigate();
     useEffect(() => {
         if (location.state != null) {
             setaddAdmin(location.state.addAdmin)
         }
+        fetchRoles()
 
     }, [])
+    const fetchRoles = async () => {
+        const data1 = await fetch("http://localhost:5000/Roles")
+        const parsedData1 = await data1.json()
+        setRoleView(parsedData1)
+    }
     const submitAdminDetails = (event) => {
         const form = event.currentTarget;
         console.log(form.checkValidity())
@@ -30,22 +36,12 @@ const AddAdmin = () => {
             setValidated(true);
         }
         else {
-            if (addAdmin.id > 0) {
-                const requestOptions = {
-                    'method': 'PUT',
-                    'headers': { "content-type": "application/json" },
-                    'body': JSON.stringify({
-                        adminname: addAdmin.adminname,
-                        password: addAdmin.admin_password,
-                        email: addAdmin.email_address,
-                        address1: addAdmin.address1,
-                        address2: addAdmin.address2,
-                        phone: addAdmin.phone
+            //To Check if email id already exists in role table 
+            const items = roleView.filter(item => item.email_address == addAdmin.email_address);
+            if (items.length > 0) {
 
-                    })
-                }
-                const data = fetch(`http://localhost:5000/Admin/${addAdmin.id}`, requestOptions)
-
+                alert("email already exists")
+                event.preventDefault();
             }
             else {
 

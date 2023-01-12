@@ -1,173 +1,24 @@
 {
   "Admin": [
     {
-      "id": 1,
-      "adminname": "Admin",
-      "password": "123",
-      "dob": "08/07/1995",
-      "address1": "Sector 15",
-      "address2": "Noida India",
-      "phone": "9987654332"
-    },
-    {
-      "id": 2,
-      "adminname": "Admin2",
-      "password": "2345",
-      "dob": "12/02/1999",
-      "address1": "Sector 43",
-      "address2": "Noida India",
-      "phone": "9287636591"
-    },
-    {
-      "id": 3,
-      "adminname": "Admin3",
-      "password": "admin3",
-      "dob": "31/12/1997",
-      "address1": "Sector 87",
-      "address2": "Noida India",
-      "phone": "8798763542"
+      "adminname": "Nikhil",
+      "password": "123456",
+      "email": "nikhilkatiyar5@gmail.com",
+      "address1": "Noida",
+      "address2": "UP",
+      "phone": "8989898989",
+      "id": 1
     }
   ],
-  "Doctor": [
-    {
-      "name": "ritu",
-      "address1": "gfdgfd",
-      "address2": "gfdg",
-      "specialist": "fg",
-      "mobile": "898098089",
-      "degree": "dsfdsf",
-      "doctoremailaddress": "test@test.com",
-      "id": 23
-    },
-    {
-      "name": "fsdf",
-      "address1": "dsfdsffds",
-      "address2": "fdsf",
-      "specialist": "sdff",
-      "mobile": "879879789",
-      "degree": "hgfh",
-      "doctoremailaddress": "dsf@gmail.com",
-      "id": 24
-    },
-    {
-      "name": "TT",
-      "address1": "dsfdsf",
-      "address2": "fsdf",
-      "specialist": "fdf",
-      "mobile": "7876876875",
-      "degree": "cxvcxv",
-      "doctoremailaddress": "test@test.com",
-      "id": 25
-    },
-    {
-      "name": "ds",
-      "address1": "dsf",
-      "address2": "sdf",
-      "specialist": "sdf",
-      "mobile": "67878",
-      "degree": "fdg",
-      "doctoremailaddress": "dsf@gmail.com",
-      "id": 26
-    },
-    {
-      "name": "dsf",
-      "address1": "fdsf",
-      "address2": "dsf",
-      "specialist": "fsdf",
-      "mobile": "765756765",
-      "degree": "fdgdfg",
-      "doctoremailaddress": "tes@test.com",
-      "id": 27
-    },
-    {
-      "name": "fds",
-      "address1": "fdsf",
-      "address2": "dsf",
-      "specialist": "dsf",
-      "mobile": "877",
-      "degree": "hghgh",
-      "doctoremailaddress": "test@test.com",
-      "id": 28
-    },
-    {
-      "name": "Yamini gautam",
-      "address1": "test",
-      "address2": "fdsf",
-      "specialist": "dsf",
-      "mobile": "8768768",
-      "degree": "hgfhgfh",
-      "doctoremailaddress": "yamini@gamil.com",
-      "id": 29
-    },
-    {
-      "name": "Nikhil Y",
-      "address1": "65657",
-      "address2": "56767",
-      "specialist": "gffg",
-      "mobile": "77867878",
-      "degree": "gffdg",
-      "doctoremailaddress": "nikhil.y@gmail.com",
-      "id": 33
-    },
-    {
-      "name": "Test",
-      "address1": "dsf",
-      "address2": "fdsf",
-      "specialist": "sfdsf",
-      "mobile": "768768768",
-      "degree": "fdsfdsf",
-      "doctoremailaddress": "tes@test.com",
-      "id": 34
-    }
-  ],
+  "Doctor": [],
   "Patient": [
     {
-      "name": "Ravi Kumar",
-      "email": "ravikumar23@gmail.com",
-      "address1": "D-6, Sector-2, Noida",
-      "address2": "Noida India",
-      "mobile": "42342344342",
+      "name": "nikhil",
+      "email": "niikhil@gmail.com",
+      "address1": "sds",
+      "address2": "dsd",
+      "mobile": "2332",
       "id": 1
-    },
-    {
-      "id": 2,
-      "name": "Aman Singh",
-      "email": "aman.singh@gmail.com",
-      "address1": "B-15, Sector-22, Indaur ",
-      "address2": "Indaur India",
-      "mobile": "8732908711"
-    },
-    {
-      "id": 3,
-      "name": "Amit Rajput",
-      "email": "rajputamit007@gmail.com",
-      "address1": "D-66, Sector-14, Noida",
-      "address2": "Noida India",
-      "mobile": "9044407665"
-    },
-    {
-      "name": "Deepika Sharma",
-      "email": "deepikasharmacloud@gmail.com",
-      "address1": "test123",
-      "address2": "test12345",
-      "mobile": "7687689789",
-      "id": 4
-    },
-    {
-      "name": "Tanisha jain",
-      "email": "deepika.jain555@gmail.com",
-      "address1": "dsf",
-      "address2": "fsdf",
-      "mobile": "898979887989",
-      "id": 7
-    },
-    {
-      "name": "Test",
-      "email": "jaindeepika2029@gmail.com",
-      "address1": "555 usha nagar ext",
-      "address2": "fdsfdsf",
-      "mobile": "98980980980",
-      "id": 8
     }
   ],
   "Disease": [
@@ -266,73 +117,22 @@
       "id": 12
     }
   ],
-  "PatientDisease": [
-    {
-      "id": 1,
-      "disease_id": 2,
-      "patient_id": 4,
-      "suffering_date": "2023-01-12",
-      "medicine_id": 6,
-      "doctor_id": 2
-    },
-    {
-      "id": 2,
-      "disease_id": 4,
-      "patient_id": 2,
-      "suffering_date": "2023-01-12",
-      "medicine_id": 9,
-      "doctor_id": 2
-    },
-    {
-      "doctor_id": "11",
-      "disease_id": "4",
-      "patient_id": "5",
-      "suffering_date": "2023-01-12",
-      "medicine_id": "4",
-      "id": 3
-    },
-    {
-      "doctor_id": "14",
-      "disease_id": 12,
-      "patient_id": "4",
-      "suffering_date": "2023-01-20",
-      "medicine_id": "11",
-      "id": 5
-    },
-    {
-      "doctor_id": "30",
-      "disease_id": "4",
-      "patient_id": "4",
-      "suffering_date": "2023-01-27",
-      "medicine_id": "6",
-      "id": 6
-    }
-  ],
+  "PatientDisease": [],
   "Roles": [
     {
-      "email_address": "ravikumar23@gmail.com",
+      "email_address": "nikhilkatiyar5@gmail.com",
+      "role": "admin",
+      "id": 1
+    },
+    {
+      "email_address": "niikhil@gmail.com",
       "role": "patient",
       "id": 2
     },
     {
-      "email_address": "nikhil.y@gmail.com",
+      "email_address": "nikhil.kumar1@yash.com",
       "role": "doctor",
-      "id": 4
-    },
-    {
-      "email_address": "nikhil.kumar@yash.com",
-      "role": "doctor",
-      "id": 6
-    },
-    {
-      "email_address": "deepika.jain555@gmail.com",
-      "role": "patient",
-      "id": 7
-    },
-    {
-      "email_address": "jaindeepika2029@gmail.com",
-      "role": "patient",
-      "id": 9
+      "id": 3
     }
   ]
 }
