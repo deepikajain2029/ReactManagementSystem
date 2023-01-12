@@ -1,3 +1,4 @@
+import { auto } from '@popperjs/core';
 import React, { useEffect, useState } from 'react'
 import DataTable from 'react-data-table-component'
 import { AiFillDelete, AiFillEdit } from 'react-icons/ai';
@@ -82,7 +83,11 @@ const ViewAllDoctors = () => {
             wrap: true,
             style: {
                 fontSize: '15px',
-                background:'#F3F3F3'
+                background:'#F3F3F3',
+                //overflowWrap: 'break-word',
+                //whiteSpace: 'pre-wrap',
+                //flex:1, flexWrap: 'wrap',
+                width:auto
               },
         },
         {
