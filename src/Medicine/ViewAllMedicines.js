@@ -20,28 +20,39 @@ const ViewAllMedicines = () => {
         {
             id: "mediciname",
             name: "Medicine Name",
-            id: "mediciname",
-            name: "Medicine Name",
             selector: (row) => row.name,
             sortable: true,
+            wrap: true,
+            style: {
+                fontSize: '15px',
+                background: '#F3F3F3'
+            },
         },
         {
-            id: "edit",
+
             id: "edit",
             name: "Edit",
             cell: (row) =>
             (
-                <AiFillEdit onClick={() => editMedicine(row.id)}></AiFillEdit>
+                <AiFillEdit style={{ color: "87CEFA" }} onClick={() => editMedicine(row.id)}></AiFillEdit>
             ),
+            style: {
+                fontSize: '20px',
+                background: '#F3F3F3',
+            },
         },
         {
-            id: "delete",
+
             id: "delete",
             name: "Delete",
             cell: (row) =>
             (
-                <AiFillDelete onClick={() => deleteMedicine(row.id)}></AiFillDelete>
+                <AiFillDelete style={{ color: "red" }} onClick={() => deleteMedicine(row.id)}></AiFillDelete>
             ),
+            style: {
+                background: '#F3F3F3',
+                fontSize: '20px',
+            },
         }
     ]
     const deleteMedicine = async (id) => {
@@ -55,7 +66,7 @@ const ViewAllMedicines = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                const data =  fetch(`http://localhost:5000/Medicine/${id}`, { method: 'delete' })
+                const data = fetch(`http://localhost:5000/Medicine/${id}`, { method: 'delete' })
                 Swal.fire(
                     'Deleted!',
                     'Your file has been deleted.',
@@ -64,7 +75,7 @@ const ViewAllMedicines = () => {
                 window.location.reload(true)
             }
         })
-       
+
 
         fetchMedicineDetails();
     }
@@ -77,38 +88,39 @@ const ViewAllMedicines = () => {
     }
 
     useEffect(() => {
-        fetchMedicineDetails();
-    }, []
-    );
-    useEffect(() => {
-        let filtered = medicineView.filter(d => d.name.toLowerCase().includes(search.toLowerCase()))
-        setmedicineView(filtered)
+        if (search == "") {
+            fetchMedicineDetails();
+        }
+        else {
+            let filtered = medicineView.filter(d => d.name.toLowerCase().includes(search.toLowerCase()))
+            setmedicineView(filtered)
+        }
     }, [search]
     )
     return (
         <div className="sb-nav-fixed">
-        <div className="container " >
-            <div id="layoutSidenav">
-                <div id="layoutSidenav_content">
-                    <div className="row">
-                        <DataTable title="View All Medicines"
-                            columns={columns}
-                            data={medicineView}
-                            pagination
-                            fixedHeader
-                            fixedHeaderScrollHeight='450px'
-                            selectableRowsHighlight
-                            highlightOnHover
-                            subHeader
-                            subHeaderComponent={<input type="text" placeholder='search by name'
-                                value={search}
-                                onChange={(e) => SetSearch(e.target.value)} />}
-                        />
+            <div className="container " >
+                <div id="layoutSidenav">
+                    <div id="layoutSidenav_content">
+                        <div className="row">
+                            <DataTable title="View All Medicines"
+                                columns={columns}
+                                data={medicineView}
+                                pagination
+                                fixedHeader
+                                fixedHeaderScrollHeight='350px'
+                                selectableRowsHighlight
+                                highlightOnHover
+                                subHeader
+                                subHeaderComponent={<input type="text" placeholder='search by name'
+                                    value={search}
+                                    onChange={(e) => SetSearch(e.target.value)} />}
+                            />
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
     )
 }
 

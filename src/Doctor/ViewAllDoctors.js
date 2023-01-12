@@ -28,12 +28,22 @@ const ViewAllDoctors = () => {
             name: "Doctors",
             selector: (row) => row.name,
             sortable: true,
+            wrap: true,
+            style: {
+                fontSize: '15px',
+                background:'#F3F3F3'
+              },
         },
         {
             id: "sepicalist",
             name: "Sepicalist",
             selector: (row) => row.specialist,
             sortable: true,
+            wrap: true,
+            style: {
+                fontSize: '15px',
+                background:'#F3F3F3'
+              },
         },
 
         {
@@ -41,6 +51,10 @@ const ViewAllDoctors = () => {
             name: "Degree",
             selector: (row) => row.degree,
             sortable: true,
+            style: {
+                fontSize: '15px',
+                background:'#F3F3F3'
+              },
         },
 
         {
@@ -48,6 +62,11 @@ const ViewAllDoctors = () => {
             name: "Mobile",
             selector: (row) => row.mobile,
             sortable: true,
+            wrap: true,
+            style: {
+                fontSize: '15px',
+                background:'#F3F3F3'
+              },
         },
 
         {
@@ -55,22 +74,37 @@ const ViewAllDoctors = () => {
             name: "Email",
             selector: (row) => row.doctoremailaddress,
             sortable: true,
+            wrap: true,
+            style: {
+                fontSize: '15px',
+                background:'#F3F3F3'
+              },
         },
         {
             id: "edit",
             name: "Edit",
+            width:'80px',
             cell: (row) =>
             (
                 <AiFillEdit onClick={() => editDoctor(row.id)}></AiFillEdit>
             ),
+            style: {
+                fontSize: '15px',
+                background:'#F3F3F3'
+              },
         },
         {
             id: "delete",
             name: "Delete",
+            width:'100px',
             cell: (row) =>
             (
                 <AiFillDelete onClick={() => deleteDoctor(row.id)}></AiFillDelete>
             ),
+            style: {
+                background:'#F3F3F3',
+                fontSize: '20px'
+              },
         }
     ]
     const editDoctor = async (id) => {

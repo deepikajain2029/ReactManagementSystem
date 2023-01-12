@@ -28,6 +28,11 @@ const ViewAllDiseases = () => {
 
             selector: (row) => row.name,
             sortable: true,
+            wrap: true,
+            style: {
+                fontSize: '15px',
+                background:'#F3F3F3'
+              },
         },
         {
 
@@ -83,29 +88,18 @@ const ViewAllDiseases = () => {
         const data = await fetch(`http://localhost:5000/Disease/${id}`)
 
         const response = await data.json();
-
-        console.log(response)
-
         navigate("/adddisease", { state: { adddisease: response } })
 
     }
-
     useEffect(() => {
-
-        fetchDiseaseDetails();
-
-    }, []
-
-    );
-
-    useEffect(() => {
-
-        let filtered = diseaseView.filter(d => d.name.toLowerCase().includes(search.toLowerCase()))
-
-        setdiseaseView(filtered)
-
+        if (search == "") {
+            fetchDiseaseDetails();
+        }
+        else {
+            let filtered = diseaseView.filter(d => d.name.toLowerCase().includes(search.toLowerCase()))
+            setdiseaseView(filtered)
+        }
     }, [search]
-
     )
     return (
         

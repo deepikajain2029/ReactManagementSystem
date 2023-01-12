@@ -124,7 +124,7 @@ const AddPatientDisease = () => {
             icon: 'success',
             confirmButtonText: 'Ok'
           })
-        navigate('/viewpatientdisease');
+        navigate('/viewdoctorpatienthistory')
        
     };
     return (
