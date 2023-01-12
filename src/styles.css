@@ -9,6 +9,11 @@
     font-size: 17px;
     color: white;
   }
+  [data-column-id="medicinename"].rdt_TableCol {
+    background-color: #0D6EFD;
+    font-size: 17px;
+    color: white;
+  }
 
   [data-column-id="suffdate"].rdt_TableCol {
     background-color: #0D6EFD;
@@ -67,3 +72,9 @@
     font-size: 17px;
     color: white;
   }
+ .rdt_TableHeader {
+    text-align: center;
+    font-family: Arial;
+   text-decoration: underline;
+   margin-top: 100px;
+}

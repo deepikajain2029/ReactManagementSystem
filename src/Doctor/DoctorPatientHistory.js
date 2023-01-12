@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import DataTable from 'react-data-table-component'
 import Button from 'react-bootstrap/Button';
-import {useAuthState} from 'react-firebase-hooks/auth'
+import { useAuthState } from 'react-firebase-hooks/auth'
 import { auth } from "../firbase";
+import { Navigate, useNavigate } from 'react-router';
 
 
 const DoctorPatientHistory = () => {
@@ -12,28 +13,20 @@ const DoctorPatientHistory = () => {
     const [patientView, setpatientView] = useState([]);
     const [medicineView, setmedicineView] = useState([]);
     const [doctorView, setdoctorView] = useState([]);
-    const[user, loading,error]=useAuthState(auth);
 
-    const fetchDoctors = async () => {
-        const data4 = await fetch("http://localhost:5000/doctor")
-        const parsedData4 = await data4.json()
-        setdoctorView(parsedData4)
-        console.log(doctorView);
+    const [user, loading, error] = useAuthState(auth);
+    const navigate = useNavigate();
+    const fetchDoctorDetails = async () => {
+        const data = await fetch("http://localhost:5000/doctor")
+        const parsedData = await data.json()
+        setdoctorView(parsedData)
     }
+
     const fetchPatientDiseaseDetails = async () => {
-         const data = await fetch("http://localhost:5000/PatientDisease")
-         const parsedData = await data.json()
-        // if(role=="doctor")
-        // {
-            const emailID="deepikasharmacloud@gmail.com";
-            console.log(doctorView) 
-            const items1 = doctorView.filter(item => item.doctoremailaddress == emailID);  
-        
-           console.log(items1.id)
-             const items = parsedData.filter(item => item.doctor_id == 14);   
-            setpatientDiseaseView(items)
-        //}
-      
+        const newdata = await fetch("http://localhost:5000/PatientDisease")
+        const newparsedData = await newdata.json()
+        const items = newparsedData.filter(item => item.doctor_id == 14);
+        setpatientDiseaseView(items)
     }
     const fetchPatitents = async () => {
         const data2 = await fetch("http://localhost:5000/Patient")
@@ -60,8 +53,8 @@ const DoctorPatientHistory = () => {
             sortable: true,
             style: {
                 fontSize: '15px',
-                background:'#F3F3F3'
-              },
+                background: '#F3F3F3'
+            },
         },
         {
             id: "diseasename",
@@ -70,18 +63,18 @@ const DoctorPatientHistory = () => {
             sortable: true,
             style: {
                 fontSize: '15px',
-                background:'#F3F3F3'
-              },
+                background: '#F3F3F3'
+            },
         },
         {
-            id: "diseasename",
+            id: "medicinename",
             name: "Medicine",
             selector: (row) => medicineView.map((d) => { if (d.id == row.medicine_id) { return (d.name) } }),
             sortable: true,
             style: {
                 fontSize: '15px',
-                background:'#F3F3F3'
-              },
+                background: '#F3F3F3'
+            },
         },
         {
             id: "suffdate",
@@ -90,24 +83,12 @@ const DoctorPatientHistory = () => {
             sortable: true,
             style: {
                 fontSize: '15px',
-                background:'#F3F3F3'
-              },
-        },
-        {
-            id: "suffdate",
-            name: "Action",
-            cell:(row)=>
-            (
-                <Button type="variant">Prescribe Medicine</Button>
-            ),
-            style: {
-                background:'#F3F3F3'
-              },
+                background: '#F3F3F3'
+            },
         }
     ]
-    
     useEffect(() => {
-        fetchDoctors();
+        fetchDoctorDetails();
         fetchDisease();
         fetchPatitents();
         fetchMedicines();

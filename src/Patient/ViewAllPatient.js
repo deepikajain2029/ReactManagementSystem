@@ -27,6 +27,7 @@ const ViewAllPatient = () => {
             name: "Patients",
             selector: (row) => row.name,
             sortable: true,
+            wrap: true,
             style: {
                 fontSize: '15px',
                 background:'#F3F3F3'
@@ -37,9 +38,11 @@ const ViewAllPatient = () => {
             name: "Email",
             selector: (row) => row.email,
             sortable: true,
+            wrap: true,
             style: {
                 fontSize: '15px',
-                background:'#F3F3F3'
+                background:'#F3F3F3',
+                width:'1100px'
               },
         },
 
@@ -48,6 +51,7 @@ const ViewAllPatient = () => {
             name: "Address 1",
             selector: (row) => row.address1,
             sortable: true,
+            wrap: true,
             style: {
                 fontSize: '15px',
                 background:'#F3F3F3'
@@ -58,6 +62,7 @@ const ViewAllPatient = () => {
             name: "Address 2",
             selector: (row) => row.address2,
             sortable: true,
+            wrap: true,
             style: {
                 fontSize: '15px',
                 background:'#F3F3F3'
@@ -68,6 +73,7 @@ const ViewAllPatient = () => {
             name: "Mobile",
             selector: (row) => row.mobile,
             sortable: true,
+            wrap: true,
             style: {
                 fontSize: '15px',
                 background:'#F3F3F3'
@@ -76,6 +82,8 @@ const ViewAllPatient = () => {
         {
             id: "edit",
             name: "Edit",
+            wrap: true,
+            width:'80px',
             cell: (row) =>
             (
                 <AiFillEdit style={{color:"87CEFA"}} onClick={() => editPatient(row.id)}></AiFillEdit>
@@ -88,6 +96,8 @@ const ViewAllPatient = () => {
         {
             id: "delete",
             name: "Delete",
+            wrap: true,
+            width:'100px',
             cell: (row) =>
             (
                 <AiFillDelete style={{color:"red"}} onClick={() => deletePatient(row.id)}></AiFillDelete>
@@ -134,8 +144,6 @@ const ViewAllPatient = () => {
         console.log(response)
 
         navigate("/addpatient", { state: { addPatient: response } })
-
-        // navigate("/addpatient", { state: { addpatient: response } })
 
     }
 

@@ -3,6 +3,7 @@ import Table from 'react-bootstrap/Table';
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { useNavigate, useLocation ,Link} from 'react-router-dom';
 import { AiFillDelete, AiFillEdit } from 'react-icons/ai';
+import { right } from '@popperjs/core';
 
 
 const Dashboard = () => {
@@ -145,8 +146,8 @@ const Dashboard = () => {
                                         <i className="fas fa-table me-1 "></i>
                                          Patient Details {' '}
                                         <form className="d-none d-md-inline-block" >
-                                            <div className="input-group">
-                                            <Link to='/viewallpatients'>View More...</Link>
+                                            <div className="input-group" >
+                                            <Link className="text-white" to='/viewallpatients'>View More...</Link>
                                             </div>
                                         </form>
                                     </div>}
@@ -155,7 +156,7 @@ const Dashboard = () => {
                                          Doctor Details {' '}
                                         <form className="d-none d-md-inline-block" >
                                             <div className="input-group">
-                                            <Link to='/viewalldoctors'>View More...</Link>
+                                            <Link className="text-white" to='/viewalldoctors'>View More...</Link>
                                             </div>
                                         </form>
                                     </div>}
@@ -164,7 +165,7 @@ const Dashboard = () => {
                                          Medicine Details {' '}
                                         <form className="d-none d-md-inline-block" >
                                             <div className="input-group" >
-                                            <Link to='/viewallmedicines'>View More...</Link>
+                                            <Link className="text-white" to='/viewallmedicines'>View More...</Link>
                                             </div>
                                         </form>
                                     </div>}
@@ -173,7 +174,7 @@ const Dashboard = () => {
                                          Disease Details {' '}
                                         <form className="d-none d-md-inline-block" >
                                             <div className="input-group" >
-                                            <Link to='/viewalldiseases'>View More...</Link>
+                                            <Link className="text-white" to='/viewalldiseases'>View More...</Link>
                                             </div>
                                         </form>
                                     </div>}
