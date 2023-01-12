@@ -30,6 +30,7 @@ const ViewAllDoctors = () => {
             name: "Doctors",
             selector: (row) => row.name,
             sortable: true,
+            wrap: true,
             style: {
                 fontSize: '15px',
                 background:'#F3F3F3'
@@ -40,6 +41,7 @@ const ViewAllDoctors = () => {
             name: "Sepicalist",
             selector: (row) => row.specialist,
             sortable: true,
+            wrap: true,
             style: {
                 fontSize: '15px',
                 background:'#F3F3F3'
@@ -55,6 +57,10 @@ const ViewAllDoctors = () => {
                 fontSize: '15px',
                 background:'#F3F3F3'
               },
+            style: {
+                fontSize: '15px',
+                background:'#F3F3F3'
+              },
         },
 
         {
@@ -62,6 +68,7 @@ const ViewAllDoctors = () => {
             name: "Mobile",
             selector: (row) => row.mobile,
             sortable: true,
+            wrap: true,
             style: {
                 fontSize: '15px',
                 background:'#F3F3F3'
@@ -73,6 +80,7 @@ const ViewAllDoctors = () => {
             name: "Email",
             selector: (row) => row.doctoremailaddress,
             sortable: true,
+            wrap: true,
             style: {
                 fontSize: '15px',
                 background:'#F3F3F3',
@@ -85,25 +93,27 @@ const ViewAllDoctors = () => {
         {
             id: "edit",
             name: "Edit",
+            width:'80px',
             cell: (row) =>
             (
                 <AiFillEdit style={{color:"87CEFA"}} onClick={() => editDoctor(row.id)}></AiFillEdit>
             ),
             style: {
-                fontSize: '20px',
-                background:'#F3F3F3',
+                fontSize: '15px',
+                background:'#F3F3F3'
               },
         },
         {
             id: "delete",
             name: "Delete",
+            width:'100px',
             cell: (row) =>
             (
                 <AiFillDelete style={{color:"red"}} onClick={() => deleteDoctor(row.id)}></AiFillDelete>
             ),
             style: {
                 background:'#F3F3F3',
-                fontSize: '20px',
+                fontSize: '20px'
               },
         }
     ]
